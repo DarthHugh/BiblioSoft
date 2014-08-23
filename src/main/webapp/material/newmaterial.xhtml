@@ -1,0 +1,45 @@
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+    
+    <ui:decorate template="../theme/patern.xhtml">
+        <ui:define name="centro">
+            <p:fieldset legend="Cadastro de Matérial">
+                <h:form id="insertUser" >
+                    <p:growl id="growUser" showDetail="false" />
+
+                    <p:panelGrid columns="2" >
+                        <h:outputText value="ID: " />
+                        <p:inputText  value="#{materialBean.material.id}" required="true" 
+                                      placeholder="Id" requiredMessage="O campo Nome é obrigatório"/>
+                        <h:outputText value="Nome: " />
+                        <p:inputText  value="#{materialBean.material.name}" required="true" 
+                                      placeholder="Nome" requiredMessage="O campo Nome é obrigatório"/>
+                        <h:outputText value="Autores: " />
+                        <p:inputText  value="#{materialBean.material.authorMaterialList}" required="true" 
+                                      placeholder="Autores" requiredMessage="O campo Nome é obrigatório"/>
+                        <h:outputText value="Categora: " />
+                        <p:inputText  value="#{materialBean.material.category}" required="true" 
+                                      placeholder="Categoria" requiredMessage="O campo Nome é obrigatório"/>
+                        <h:outputText value="Edição: " />
+                        <p:inputText  value="#{materialBean.material.edition}" required="true" 
+                                      placeholder="Edição" requiredMessage="O campo Nome é obrigatório"/>
+                         <h:outputText value="Ano: " />
+                         <p:inputText  value="#{materialBean.material.year}" required="true" 
+                                      placeholder="Ano" requiredMessage="O campo Nome é obrigatório"/>
+                        <h:outputText value="Nº. Exemplares: " />
+                        <p:inputText  value="#{materialBean.material.copiesnumber}" required="true" 
+                                      placeholder="Número de Exemplares" requiredMessage="O campo Nome é obrigatório"/>
+
+                    </p:panelGrid>
+                         <p:commandButton id="loginButton" value="OK" icon="ui-icon-check"  
+
+                                         update="growUser" action="#{materialBean.saveMaterial}"/>  
+                </h:form>
+
+            </p:fieldset>
+        </ui:define>
+    </ui:decorate>
+</html>

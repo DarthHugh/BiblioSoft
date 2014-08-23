@@ -1,0 +1,28 @@
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+    <ui:decorate template="../theme/patern.xhtml">
+        <ui:define name="centro">
+            <p:fieldset legend="Cadastro de Autores">
+
+                <h:form id="insertAuthor" >
+                    <p:growl id="growAuthor" showDetail="false" />
+
+                    <p:messages />
+                    <p:panelGrid columns="2" >
+                        <h:outputText value="Nome: " />
+                        <p:inputText  value="#{authorBean.author.name}" id="name" required="true" placeholder="Nome" 
+                                      requiredMessage="O campo Nome é obrigatório" size="40"/>
+                  
+                    </p:panelGrid>
+                    <p:commandButton id="okButton" value="OK" icon="ui-icon-check"  
+
+                                     update="growAuthor" action="#{authorBean.save}"/>  
+
+                </h:form>   
+            </p:fieldset>
+        </ui:define>
+    </ui:decorate>
+</html>

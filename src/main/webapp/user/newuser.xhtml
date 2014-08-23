@@ -1,0 +1,37 @@
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+
+    <ui:decorate template="../theme/patern.xhtml">
+        <ui:define name="centro">
+            <p:fieldset legend="Cadastro de Usuários">
+                <h:form id="insertUser" >
+                    <p:growl id="growUser" showDetail="false" />
+
+                    <p:panelGrid columns="2" >
+                        <h:outputText value="Nome: " />
+                        <p:inputText  value="#{userBean.userbibliosoft.name}" required="true" placeholder="Nome" requiredMessage="O campo Nome é obrigatório"/>
+                        <h:outputText value="CPF: " />
+                        <p:inputMask value="#{userBean.userbibliosoft.cpf}" mask="999.999.999-99"  required="true" placeholder="CPF" 
+                                     requiredMessage="O campo CPF é obrigatório"/>
+                        <h:outputText value="E-mail " />
+                        <p:inputText  value="#{userBean.userbibliosoft.email}" required="true" placeholder="bibliosoft@example.com" requiredMessage="O campo E-mail é obrigatório"/>
+
+                        <h:outputText value="Usuario: " />
+                        <p:inputText  value="#{userBean.userbibliosoft.registration}" required="true" placeholder="Login" requiredMessage="O campo Login é obrigatório"/>
+                        <h:outputText value="Senha: " />
+                        <p:password value="#{userBean.userbibliosoft.password}" required="true" placeholder="Senha" requiredMessage="O campo Senha é obrigatório"/>
+                        <h:outputText value="Confirmar senha: " />
+                        <p:password value="#{userBean.userbibliosoft.password}" required="true" placeholder="Confirmar senha" requiredMessage="Confirme sua senha"/>
+                    </p:panelGrid>
+                    <p:commandButton id="loginButton" value="OK" icon="ui-icon-check"  
+
+                                     update="growUser" action="#{userBean.saveUserbibliosoft}"/>  
+
+                </h:form>
+            </p:fieldset>
+        </ui:define>
+    </ui:decorate>
+</html>

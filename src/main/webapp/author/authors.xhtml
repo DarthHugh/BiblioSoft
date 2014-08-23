@@ -1,0 +1,48 @@
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+
+    <ui:decorate template="../theme/patern.xhtml">
+        <ui:define name="centro">
+            <f:view>
+                <h:form id="authors">
+                    <p:dataTable var="author" value="#{authorBean.authors}" paginator="true" style="width: 60%;"
+                                 rows="10" rowsPerPageTemplate="5,10,15,20,30,50"
+                                 rowKey="#{author}" selectionMode="single"
+                                 selection="#{authorBean.author}" >
+                        
+                        <p:ajax event="rowSelect"  update=":authors:authorDetail" 
+                                oncomplete="PF('authorDialog').show()" />
+                        
+                        <f:facet name="header">
+                            Lista de Autores
+                        </f:facet>
+                        
+                        <p:column headerText="Nome: " sortBy="#{author.name}" filterBy="#{author.name}">
+                            <h:outputText value="#{author.name}"/>
+                        </p:column>
+                        
+                    </p:dataTable>
+
+                    <p:dialog header="Autor" widgetVar="authorDialog" modal="false" 
+                              showEffect="fade" hideEffect="fade" resizable="false">
+
+                        <p:outputPanel id="authorDetail" style="text-align: center">
+                            <p:panelGrid columns="2"  columnClasses="label, value">
+                                <h:outputText value="Nome"/>
+                                <p:inputText value="#{authorBean.author.name}"/>
+
+
+                                <p:commandButton value="Remover" action="#{authorBean.remove}"/>
+                                <p:commandButton value="Atualizar" action="#{authorBean.update}" 
+                                                 />
+                            </p:panelGrid>
+                        </p:outputPanel>
+                    </p:dialog>
+                </h:form>
+            </f:view>
+        </ui:define>
+    </ui:decorate>
+</html>

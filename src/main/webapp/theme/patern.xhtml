@@ -1,0 +1,91 @@
+<html 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>BiblioSoft - IFPB</title>
+        <link rel="stylesheet" type="text/css" href="../css/style.css" />
+        <link rel="shortcut icon" href="../images/book.ico"/>
+    </h:head>
+    <h:body >
+        <div align="center">
+            <p:layout fullPage="true" style="margin: 0px; " >  
+                <p:layoutUnit position="north"  size="240 ">  
+                   
+                    <f:metadata>
+                        <f:viewParam name="id_menu" value="#{resquestMenu.idMenu}" />
+                    </f:metadata>
+                    <p:fieldset style="margin: 0px;height: 91%; border-color: #FFF;border: 0px; 
+                                background-image: url(../images/biblioSoft.jpg); background-position: center;">
+                        <h:form>  
+                            
+                            <p:menubar style="margin-top: 40px;background-image:url(../images/linha.jpg);
+                                       background-position: top; ">
+
+                                <p:menuitem value="Início" icon="ui-icon-home" url="../begin/index.xhtml"/>
+
+                                <p:submenu label="Materiais" icon="ui-icon-document">
+                                    <p:menuitem value="Novo material" url="/material/newmaterial.xhtml" icon="ui-icon-circle-plus"/>
+                                    <p:menuitem value="Ver materias" url="/material/materials.xhtml" icon="ui-icon-search"/>
+
+                                </p:submenu>
+
+                                <p:submenu label="Esmpréstimos" icon="ui-icon-pencil">
+                                    <p:menuitem value="Novo empréstimo" url="/borrowing/newborrowing.xhtml" icon="ui-icon-circle-plus"/>
+                                    <p:menuitem value="Ver empréstimos" icon="ui-icon-search"/>
+                                </p:submenu>
+
+                                <p:submenu label="Usuários" icon="ui-icon-person">
+                                    <p:menuitem value="Novo usuário" url="/user/newuser.xhtml" icon="ui-icon-circle-plus"/>
+                                    <p:menuitem value="Ver usuários" url="/user/users.xhtml" icon="ui-icon-search"/>
+                                </p:submenu>
+
+                                <p:submenu label="Autores" icon="ui-icon-person" >
+                                    <p:menuitem value="Novo autor" url="/author/newauthor.xhtml" icon="ui-icon-circle-plus"/>
+                                    <p:menuitem value="Ver autores" url="/author/authors.xhtml" icon="ui-icon-search"/>
+
+                                </p:submenu>
+
+                                <p:menuitem value="Relatórios" 
+                                            icon="ui-icon-print" />
+
+                                <f:facet name="options">
+                                    <p:inputText style="margin-right:10px" placeholder="Pesquisar"/>
+                                    <p:button  value="Sair" icon="ui-icon-extlink" href="../login.xhtml" />
+                                </f:facet>
+                            </p:menubar>
+                             <span id="logo">BiblioSoft</span>
+                        </h:form>
+                    </p:fieldset>
+
+                </p:layoutUnit>  
+
+                <p:layoutUnit position="west" >  
+                    <ui:insert name="left">
+                        <p:fieldset legend="Últimos empréstimos" >
+                                - JAVA Como programar<br> </br>
+                                - Engenharia de software<br> </br>
+                                - Cormem Algorithms<br> </br>
+                                - Core Java<br> </br>
+                                - Use a Cabeça Desing Paterns
+                        </p:fieldset>
+                    </ui:insert>
+                </p:layoutUnit>  
+                <p:layoutUnit position="center">  
+                    <ui:insert name="centro">
+                        O que estiver aqui será substituido!
+                    </ui:insert>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="30">  
+                    IFPB - Campus Monteiro. ADS 2012.1 -- BILIOSOFT --  Projeto da Disciplina Desenvolvimento de 
+                    Aplicações corporativas Avançadas
+                </p:layoutUnit>  
+            </p:layout>  
+        </div>
+    </h:body>
+</html>

@@ -1,0 +1,73 @@
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+
+    <ui:decorate template="../theme/patern.xhtml">
+        <ui:define name="centro">
+
+            <f:view>
+                <h:form id="users">
+                    <p:dataTable var="user" value="#{userBean.usersList}" paginator="true" 
+                                 rows="10" rowsPerPageTemplate="5,10,15,20,30,50"
+                                 rowKey="#{user}" selectionMode="single"
+                                 selection="#{userBean.userbibliosoft}" >
+                        <p:ajax event="rowSelect"  update=":users:userDetail" 
+                                oncomplete="PF('userDialog').show()" />
+                        <f:facet name="header">
+                            Lista de Usuários
+                        </f:facet>
+                        <p:column headerText="ID" sortBy="#{user.id}" filterBy="#{user.id}">
+                            <h:outputText value="#{user.id}"/>
+                        </p:column>
+                        <p:column headerText="Nome" sortBy="#{user.name}" filterBy="#{user.name}">
+                            <h:outputText value="#{user.name}"/>
+                        </p:column>
+                        <p:column headerText="Login" sortBy="#{user.registration}" filterBy="#{user.registration}">
+                            <h:outputText value="#{user.registration}"/>
+                        </p:column>
+                        <p:column headerText="Email" sortBy="#{user.email}" filterBy="#{user.email}">
+                            <h:outputText value="#{user.email}"/>
+                        </p:column>
+                        <p:column headerText="CPF" sortBy="#{user.cpf}" filterBy="#{user.cpf}">
+                            <h:outputText value="#{user.cpf}"/>
+                        </p:column>
+                    </p:dataTable>
+
+                    <p:dialog header="Usuário" widgetVar="userDialog" modal="false" 
+                              showEffect="fade" hideEffect="fade" resizable="false">
+                            <p:outputPanel id="userDetail" style="text-align: center">
+                                <p:panelGrid columns="2"  columnClasses="label, value">
+                                    <f:facet name="header">
+                                        <p:graphicImage name="/images/galeria/02.jpg"/>
+                                    </f:facet>
+
+                                    <h:outputText value="Id"/>
+                                    <p:inputText value="#{userBean.userbibliosoft.id}"/>
+                                    <h:outputText value="Nome"/>
+                                    <p:inputText value="#{userBean.userbibliosoft.name}"/>
+                                    <h:outputText value="Login"/>
+                                    <p:inputText value="#{userBean.userbibliosoft.registration}"/>
+                                    <h:outputText value="Email"/>
+                                    <p:inputText value="#{userBean.userbibliosoft.email}"/>
+                                    <h:outputText value="CPF"/>
+                                    <p:inputText value="#{userBean.userbibliosoft.cpf}"/>
+                                    <h:outputText value="Senha"/>
+                                    <p:password  value="#{userBean.userbibliosoft.password}"/>
+                                    <h:outputText value="Altera senha"/>
+                                    <p:password  value="#{userBean.userbibliosoft.password}"/>
+                                    <p:commandButton value="Remover" action="#{userBean.remove}"/>
+                                    <p:commandButton value="Atualizar" action="#{userBean.update}" 
+                                                     />
+                                </p:panelGrid>
+                            </p:outputPanel>
+                    </p:dialog>
+     
+
+
+                </h:form>
+            </f:view>
+        </ui:define>
+    </ui:decorate>
+</html>
