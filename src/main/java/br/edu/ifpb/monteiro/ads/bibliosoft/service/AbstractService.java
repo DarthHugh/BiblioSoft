@@ -10,6 +10,7 @@ import br.edu.ifpb.monteiro.ads.bibliosoft.entities.IdentifiableBiblio;
 import br.edu.ifpb.monteiro.ads.bibliosoft.interfacedao.AbstractDAOIF;
 import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.InterfaceCrudService;
 import java.util.List;
+import javax.transaction.Transactional;
 
 /**
  *
@@ -20,6 +21,7 @@ public abstract class AbstractService implements InterfaceCrudService{
     protected abstract AbstractDAOIF getDao();
 
     @Override
+    @Transactional
     public void save(IdentifiableBiblio entity){
         getDao().create(entity);
         

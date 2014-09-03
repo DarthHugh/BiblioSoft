@@ -23,7 +23,6 @@ public abstract class AbstractDAO< T extends IdentifiableBiblio> implements Abst
     protected abstract EntityManager getEntityManager();
 
     @Override
-    @Transactional(Transactional.TxType.REQUIRED)
     public void create(IdentifiableBiblio entity) {
         System.out.println("DATABASE ---- " + entity.getClass());
         getEntityManager().persist(entity);
