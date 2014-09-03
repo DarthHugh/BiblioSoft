@@ -10,6 +10,7 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 
@@ -24,7 +25,7 @@ public class LoginBean implements Serializable {
     private String login;
     private String password;
 
-    @EJB
+    @Inject
     private AuthenticRemote loginEjb;
     private boolean logged = false;
 
