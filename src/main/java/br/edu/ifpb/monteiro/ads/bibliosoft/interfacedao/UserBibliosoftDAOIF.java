@@ -5,26 +5,10 @@
  */
 package br.edu.ifpb.monteiro.ads.bibliosoft.interfacedao;
 
-import br.edu.ifpb.monteiro.ads.bibliosoft.entities.UserBibliosoft;
-import java.util.List;
-
 /**
  *
  * @author jefferson
  */
-public interface UserBibliosoftDAOIF {
+public interface UserBibliosoftDAOIF extends AbstractDAOIF{
 
-    public void create(UserBibliosoft userBibliosoft);
-
-    public void edit(UserBibliosoft userBibliosoft);
-
-    public void remove(UserBibliosoft userBibliosoft);
-
-    public UserBibliosoft find(Object id);
-
-    public List<UserBibliosoft> findAll();
-
-    public List<UserBibliosoft> findRange(int[] range);
-
-    public int count();
 }

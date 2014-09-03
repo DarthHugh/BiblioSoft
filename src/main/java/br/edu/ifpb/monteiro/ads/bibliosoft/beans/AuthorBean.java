@@ -1,11 +1,12 @@
-    package br.edu.ifpb.monteiro.ads.bibliosoft.beans;
+package br.edu.ifpb.monteiro.ads.bibliosoft.beans;
 
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.Author;
 import br.edu.ifpb.monteiro.ads.bibliosoft.service.AuthorService;
+import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.AuthorServiceIF;
 import java.io.Serializable;
 import java.util.List;
-import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
@@ -16,8 +17,8 @@ import javax.inject.Named;
 @RequestScoped
 public class AuthorBean implements Serializable {
     
-    @EJB
-    private AuthorService authorService;
+    @Inject
+    private AuthorServiceIF authorService;
 
     private List<Author> authors;
     
@@ -29,7 +30,7 @@ public class AuthorBean implements Serializable {
     
     
 
-    public AuthorService getAuthorService() {
+    public AuthorServiceIF getAuthorService() {
         return authorService;
     }
 
@@ -38,7 +39,7 @@ public class AuthorBean implements Serializable {
     }
 
     public List<Author> getAuthors() {
-        authors = authorService.getAll();
+        authors = (List) authorService.getAll();
         return authors;
     }
 

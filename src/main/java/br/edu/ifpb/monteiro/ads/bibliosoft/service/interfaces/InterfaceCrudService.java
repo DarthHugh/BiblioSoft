@@ -6,17 +6,17 @@
 
 package br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces;
 
-import br.edu.ifpb.monteiro.ads.bibliosoft.entities.UserBibliosoft;
+import br.edu.ifpb.monteiro.ads.bibliosoft.entities.IdentifiableBiblio;
 import java.util.List;
 
 /**
  *
  * @author jefferson
  */
-public interface InterfaceCrudService<T> {
+public interface InterfaceCrudService {
     
-    public void save(T entity);
-    public void remove(T entity);
-    public List getAll();
-    public void update(T entity);
+    public void save(IdentifiableBiblio entity);
+    public void remove(IdentifiableBiblio entity);
+    public List<IdentifiableBiblio> getAll();
+    public void update(IdentifiableBiblio entity);
 }

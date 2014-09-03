@@ -5,55 +5,26 @@
  */
 package br.edu.ifpb.monteiro.ads.bibliosoft.service;
 
-import br.edu.ifpb.monteiro.ads.bibliosoft.dao.MaterialDAO;
-import br.edu.ifpb.monteiro.ads.bibliosoft.entities.Material;
-import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.InterfaceCrudService;
-import java.util.List;
-import javax.ejb.EJB;
-import javax.ejb.Stateless;
-import javax.ejb.LocalBean;
+import br.edu.ifpb.monteiro.ads.bibliosoft.interfacedao.AbstractDAOIF;
+import br.edu.ifpb.monteiro.ads.bibliosoft.interfacedao.MaterialDAOIF;
+import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.MaterialServiceIF;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 
 /**
  *
  * @author jefferson
  */
-@Stateless
-@LocalBean
-public class MaterialService implements InterfaceCrudService<Material> {
+@RequestScoped
+public class MaterialService extends AbstractService implements MaterialServiceIF{
 
-    @EJB
-    private MaterialDAO materialDAO;
-
-    /**
-     *
-     * @return
-     */
-    @Override
-    public List<Material> getAll() {
-        return materialDAO.findAll();
-    }
-
-    /**
-     *
-     * @param material
-     */
-    @Override
-    public void save(Material material) {
-        materialDAO.create(material);
-    }
-
-    /**
-     *
-     * @param material
-     */
-    @Override
-    public void remove(Material material) {
-        materialDAO.remove(material);
-    }
+    @Inject
+    private MaterialDAOIF materialDAO;
 
     @Override
-    public void update(Material material) {
-        materialDAO.edit(material);
+    protected AbstractDAOIF getDao() {
+        return materialDAO;
     }
+
 
 }

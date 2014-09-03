@@ -1,7 +1,7 @@
 package br.edu.ifpb.monteiro.ads.bibliosoft.login;
 
-import br.edu.ifpb.monteiro.ads.bibliosoft.entities.UserBibliosoft;
-import javax.ejb.Stateless;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Scope;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author vanderlan
  */
-@Stateless
+@RequestScoped
 public class AuthenticRemoteBean implements AuthenticRemote {
 
     @PersistenceContext(unitName = "BIBLIOSOFT-PU")

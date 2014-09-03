@@ -2,12 +2,11 @@
 package br.edu.ifpb.monteiro.ads.bibliosoft.beans;
 
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.Material;
-import br.edu.ifpb.monteiro.ads.bibliosoft.service.MaterialService;
+import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.MaterialServiceIF;
 import java.io.Serializable;
 import java.util.List;
-import javax.ejb.EJB;
-import javax.enterprise.context.Dependent;
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
@@ -18,8 +17,8 @@ import javax.inject.Named;
 @SessionScoped
 public class MaterialBean implements Serializable {
    
-    @EJB
-    private MaterialService materialUtil;
+    @Inject
+    private MaterialServiceIF materialUtil;
 
    
     private List<Material> materials;
@@ -30,7 +29,7 @@ public class MaterialBean implements Serializable {
     }
 
     public List<Material> getMaterials() {
-        materials = materialUtil.getAll();
+        materials = (List) materialUtil.getAll();
         return materials;
     }
 

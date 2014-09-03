@@ -1,36 +1,41 @@
-
 package br.edu.ifpb.monteiro.ads.bibliosoft.dao;
 
+import br.edu.ifpb.monteiro.ads.bibliosoft.entities.IdentifiableBiblio;
 import br.edu.ifpb.monteiro.ads.bibliosoft.interfacedao.AbstractDAOIF;
-import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.transaction.Transactional;
 
 /**
  *
  * @author jefferson
  * @param <T>
  */
-public abstract class AbstractDAO<T> {
+public abstract class AbstractDAO< T extends IdentifiableBiblio> implements AbstractDAOIF {
 
     private Class<T> entityClass;
-    
+
     public AbstractDAO(Class<T> entityClass) {
         this.entityClass = entityClass;
     }
-    
+
     protected abstract EntityManager getEntityManager();
-    
-    public void create(T entity) {
+
+    @Override
+    @Transactional(Transactional.TxType.REQUIRED)
+    public void create(IdentifiableBiblio entity) {
+        System.out.println("DATABASE ---- " + entity.getClass());
         getEntityManager().persist(entity);
     }
-    
-    public void edit(T entity) {
+
+    @Override
+    public void edit(IdentifiableBiblio entity) {
         getEntityManager().merge(entity);
     }
-    
-    public void remove(T entity) {
+
+    @Override
+    public void remove(IdentifiableBiblio entity) {
         getEntityManager().remove(getEntityManager().merge(entity));
     }
 
@@ -39,11 +44,13 @@ public abstract class AbstractDAO<T> {
      * @param id
      * @return
      */
-    public T find(Object id) {
+    @Override
+    public IdentifiableBiblio find(Object id) {
         return getEntityManager().find(entityClass, id);
     }
-    
-    public List<T> findAll() {
+
+    @Override
+    public List<IdentifiableBiblio> findAll() {
         CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
         return getEntityManager().createQuery(cq).getResultList();
@@ -54,7 +61,8 @@ public abstract class AbstractDAO<T> {
      * @param range
      * @return
      */
-    public List<T> findRange(int[] range) {
+    @Override
+    public List<IdentifiableBiblio> findRange(int[] range) {
         CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
         javax.persistence.Query q = getEntityManager().createQuery(cq);
@@ -62,7 +70,8 @@ public abstract class AbstractDAO<T> {
         q.setFirstResult(range[0]);
         return q.getResultList();
     }
-    
+
+    @Override
     public int count() {
         CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         javax.persistence.criteria.Root<T> rt = cq.from(entityClass);
@@ -70,5 +79,5 @@ public abstract class AbstractDAO<T> {
         javax.persistence.Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
-    
+
 }

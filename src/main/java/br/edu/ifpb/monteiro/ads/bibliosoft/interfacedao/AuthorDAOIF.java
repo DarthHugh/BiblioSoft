@@ -5,26 +5,11 @@
  */
 package br.edu.ifpb.monteiro.ads.bibliosoft.interfacedao;
 
-import br.edu.ifpb.monteiro.ads.bibliosoft.entities.Author;
-import java.util.List;
 
 /**
  *
  * @author jefferson
  */
-public interface AuthorDAOIF {
+public interface AuthorDAOIF extends AbstractDAOIF{
 
-    public void create(Author author);
-
-    public void edit(Author author);
-
-    public void remove(Author author);
-
-    public Author find(Object id);
-
-    public List<Author> findAll();
-
-    public List<Author> findRange(int[] range);
-
-    public int count();
 }

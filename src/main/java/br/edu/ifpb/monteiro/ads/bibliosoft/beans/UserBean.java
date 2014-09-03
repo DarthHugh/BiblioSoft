@@ -1,15 +1,13 @@
 package br.edu.ifpb.monteiro.ads.bibliosoft.beans;
 
+import br.edu.ifpb.monteiro.ads.bibliosoft.entities.IdentifiableBiblio;
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.UserBibliosoft;
-import br.edu.ifpb.monteiro.ads.bibliosoft.service.UserBiblioSoftService;
-import javax.inject.Named;
+import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.UserBiblioSoftServiceIF;
 import java.io.Serializable;
 import java.util.List;
-import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-import org.primefaces.event.SelectEvent;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 /**
  *
@@ -19,17 +17,17 @@ import org.primefaces.event.SelectEvent;
 @RequestScoped
 public class UserBean implements Serializable {
 
-    @EJB
-    private UserBiblioSoftService userService;
+    @Inject
+    private UserBiblioSoftServiceIF userService;
 
     private List<UserBibliosoft> usersList;
 
-    private UserBibliosoft userbibliosoft = new UserBibliosoft();
+    private IdentifiableBiblio userbibliosoft = new UserBibliosoft();
 
     public UserBean() {
     }
 
-    public UserBibliosoft getUserbibliosoft() {
+    public IdentifiableBiblio getUserbibliosoft() {
         return userbibliosoft;
     }
 
@@ -38,7 +36,7 @@ public class UserBean implements Serializable {
     }
 
     public List<UserBibliosoft> getUsersList() {
-        usersList = userService.getAll();
+        usersList = (List) userService.getAll();
         return usersList;
     }
 

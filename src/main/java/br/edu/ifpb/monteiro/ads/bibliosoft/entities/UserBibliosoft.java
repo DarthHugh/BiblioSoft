@@ -1,7 +1,6 @@
 
 package br.edu.ifpb.monteiro.ads.bibliosoft.entities;
 
-import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -19,10 +17,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "userbibliosoft")
-@XmlRootElement
-
-public class UserBibliosoft implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class UserBibliosoft implements IdentifiableBiblio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -69,10 +64,12 @@ public class UserBibliosoft implements Serializable {
         this.registration = registration;
     }
 
+    @Override
     public Long getId() {
         return id;
     }
 
+    @Override
     public void setId(Long id) {
         this.id = id;
     }

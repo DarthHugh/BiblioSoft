@@ -1,46 +1,24 @@
-
 package br.edu.ifpb.monteiro.ads.bibliosoft.service;
 
-import br.edu.ifpb.monteiro.ads.bibliosoft.dao.UserBibliosoftDAO;
-import br.edu.ifpb.monteiro.ads.bibliosoft.entities.UserBibliosoft;
-import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.InterfaceCrudService;
-import java.util.List;
-import javax.ejb.EJB;
-import javax.ejb.LocalBean;
-import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import br.edu.ifpb.monteiro.ads.bibliosoft.interfacedao.AbstractDAOIF;
+import br.edu.ifpb.monteiro.ads.bibliosoft.interfacedao.UserBibliosoftDAOIF;
+import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.UserBiblioSoftServiceIF;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 
 /**
  *
  * @author jefferson
  */
-@Stateless
-@LocalBean
-public class UserBiblioSoftService implements InterfaceCrudService<UserBibliosoft> {
+@RequestScoped
+public class UserBiblioSoftService extends AbstractService implements UserBiblioSoftServiceIF{
     
-    @EJB
-    private UserBibliosoftDAO userbibliosoftDAO;
-    
-    @Override
-    public List<UserBibliosoft> getAll () {
-        return userbibliosoftDAO.findAll();
-    }
+    @Inject
+    private UserBibliosoftDAOIF userbibliosoftDAO;
 
     @Override
-    public void save(UserBibliosoft userbibliosoft) {
-        userbibliosoftDAO.create(userbibliosoft);
+    protected AbstractDAOIF getDao() {
+        return userbibliosoftDAO;
     }
-    
-    
-    @Override
-    public void remove(UserBibliosoft userbibliosoft) {
-        userbibliosoftDAO.remove(userbibliosoft);
-    }
-
-    public void update(UserBibliosoft userbibliosoft) {
-        userbibliosoftDAO.edit(userbibliosoft);
-    }
-
 
 }

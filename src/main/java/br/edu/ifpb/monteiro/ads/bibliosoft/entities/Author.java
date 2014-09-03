@@ -1,10 +1,8 @@
 package br.edu.ifpb.monteiro.ads.bibliosoft.entities;
 
-import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -12,8 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name="author")
-@XmlRootElement
-public class Author implements Serializable {
+public class Author implements IdentifiableBiblio {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name ="id")
@@ -29,6 +26,7 @@ public class Author implements Serializable {
     /**
      * @return the id
      */
+    @Override
     public Long getId() {
         return id;
     }
@@ -36,6 +34,7 @@ public class Author implements Serializable {
     /**
      * @param id the id to set
      */
+    @Override
     public void setId(Long id) {
         this.id = id;
     }

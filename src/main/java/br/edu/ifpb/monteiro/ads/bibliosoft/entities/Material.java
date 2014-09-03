@@ -11,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -19,12 +18,9 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "material")
-@XmlRootElement
-public class Material implements Serializable {
+public class Material implements IdentifiableBiblio {
    
-    private static final long serialVersionUID = 1L;
     @Id
-  //  @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="MATERIAL_SEQUENCE")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     
@@ -65,10 +61,12 @@ public class Material implements Serializable {
         this.id = id;
     }
 
+    @Override
     public Long getId() {
         return id;
     }
 
+    @Override
     public void setId(Long id) {
         this.id = id;
     }

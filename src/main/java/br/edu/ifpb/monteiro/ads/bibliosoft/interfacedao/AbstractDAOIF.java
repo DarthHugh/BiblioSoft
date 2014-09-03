@@ -5,25 +5,26 @@
  */
 package br.edu.ifpb.monteiro.ads.bibliosoft.interfacedao;
 
+import br.edu.ifpb.monteiro.ads.bibliosoft.entities.IdentifiableBiblio;
 import java.util.List;
 
 /**
  *
  * @author jefferson
  */
-public interface AbstractDAOIF<T> {
+public interface AbstractDAOIF {
 
-    void create(T entity);
+    public void create(IdentifiableBiblio entity);
 
-    void edit(T entity);
+    public void edit(IdentifiableBiblio entity);
 
-    void remove(T entity);
+    public void remove(IdentifiableBiblio entity);
 
-    T find(Object id);
+    public IdentifiableBiblio find(Object id);
 
-    List<T> findAll();
+    public List<IdentifiableBiblio> findAll();
 
-    List<T> findRange(int[] range);
+    public List<IdentifiableBiblio> findRange(int[] range);
 
-    int count();
+    public int count();
 }

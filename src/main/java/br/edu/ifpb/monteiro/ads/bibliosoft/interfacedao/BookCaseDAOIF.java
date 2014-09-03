@@ -5,26 +5,10 @@
  */
 package br.edu.ifpb.monteiro.ads.bibliosoft.interfacedao;
 
-import br.edu.ifpb.monteiro.ads.bibliosoft.entities.BookCase;
-import java.util.List;
-
 /**
  *
  * @author jefferson
  */
-public interface BookCaseDAOIF {
+public interface BookCaseDAOIF extends AbstractDAOIF{
 
-    public void create(BookCase bookCase);
-
-    public void edit(BookCase bookCase);
-
-    public void remove(BookCase bookCase);
-
-    public BookCase find(Object id);
-
-    public List<BookCase> findAll();
-
-    public List<BookCase> findRange(int[] range);
-
-    public int count();
 }

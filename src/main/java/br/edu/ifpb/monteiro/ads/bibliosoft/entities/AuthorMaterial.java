@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -18,10 +17,8 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "author_material")
-@XmlRootElement
-
-public class AuthorMaterial implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class AuthorMaterial implements IdentifiableBiblio {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -39,10 +36,12 @@ public class AuthorMaterial implements Serializable {
         this.id = id;
     }
 
+    @Override
     public Long getId() {
         return id;
     }
 
+    @Override
     public void setId(Long id) {
         this.id = id;
     }
