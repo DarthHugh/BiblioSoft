@@ -7,7 +7,7 @@
         <ui:define name="centro">
             <p:fieldset legend="Cadastro de Matérial">
                 <h:form id="insertUser" >
-                    <p:growl id="growUser" showDetail="false" />
+                    <p:growl id="growUser" showDetail="true" />
 
                     <p:panelGrid columns="2" >
                         <h:outputText value="Nome:" />
@@ -22,17 +22,19 @@
                         <h:outputText value="Edição: " />
                         <p:inputText  value="#{materialBean.material.edition}" required="true" 
                                       placeholder="Edição" requiredMessage="O campo Nome é obrigatório"/>
-                         <h:outputText value="Ano: " />
-                         <p:inputText  value="#{materialBean.material.year}" required="true" 
+                        <h:outputText value="Ano: " />
+                        <p:inputText  value="#{materialBean.material.year}" required="true" 
                                       placeholder="Ano" requiredMessage="O campo Nome é obrigatório"/>
                         <h:outputText value="Nº. Exemplares: " />
-                        <p:inputText  value="#{materialBean.material.copiesNumber}" required="true" 
-                                      placeholder="Número de Exemplares" requiredMessage="O campo Nome é obrigatório"/>
+                        <p:inputText  value="#{materialBean.material.copiesNumber}"
+                                      required="true" placeholder="Número de Exemplares"
+                                      requiredMessage="O campo Nome é obrigatório"/>
 
                     </p:panelGrid>
-                         <p:commandButton id="loginButton" value="OK" icon="ui-icon-check"  
-
-                                         update="growUser" action="#{materialBean.saveMaterial}"/>  
+                    <p:commandButton id="btSalvarMaterial" value="Entrar" icon="ui-icon-check" 
+                                     process="btSalvarMaterial, @this"
+                                     update="growUser" action="#{materialBean.saveMaterial}"  
+                                     />  
                 </h:form>
 
             </p:fieldset>

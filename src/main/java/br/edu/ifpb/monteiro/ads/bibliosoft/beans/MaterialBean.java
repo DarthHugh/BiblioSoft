@@ -18,7 +18,7 @@ import javax.inject.Named;
 public class MaterialBean implements Serializable {
    
     @Inject
-    private MaterialServiceIF materialUtil;
+    private MaterialServiceIF materialService;
 
    
     private List<Material> materials;
@@ -29,7 +29,7 @@ public class MaterialBean implements Serializable {
     }
 
     public List<Material> getMaterials() {
-        materials = (List) materialUtil.findAll();
+        materials = (List) materialService.findAll();
         return materials;
     }
 
@@ -43,7 +43,7 @@ public class MaterialBean implements Serializable {
 
     public String saveMaterial() {
         System.out.println("DATABASE ----- BEAN MATERIAL");
-        materialUtil.save(material);
+        materialService.save(material);
         return "Materials";
     }
 
