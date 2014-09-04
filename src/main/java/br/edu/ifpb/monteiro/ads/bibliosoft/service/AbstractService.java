@@ -32,7 +32,7 @@ public abstract class AbstractService implements InterfaceCrudService{
         
     }
     @Override
-    public List<IdentifiableBiblio> getAll(){
+    public List<IdentifiableBiblio> findAll(){
         return getDao().findAll();
     }
     @Override

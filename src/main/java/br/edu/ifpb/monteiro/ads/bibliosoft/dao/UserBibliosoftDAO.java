@@ -3,9 +3,11 @@ package br.edu.ifpb.monteiro.ads.bibliosoft.dao;
 
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.UserBibliosoft;
 import br.edu.ifpb.monteiro.ads.bibliosoft.interfacedao.UserBibliosoftDAOIF;
+import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -25,6 +27,12 @@ public class UserBibliosoftDAO extends AbstractDAO<UserBibliosoft>
 
     public UserBibliosoftDAO() {
         super(UserBibliosoft.class);
+    }
+
+    @Override
+    public List<UserBibliosoft> getAll() {
+       Query query = em.createQuery("from UserBibliosoft u");
+       return query.getResultList();
     }
     
 }

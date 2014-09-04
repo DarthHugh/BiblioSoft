@@ -36,7 +36,7 @@ public class UserBean implements Serializable {
     }
 
     public List<UserBibliosoft> getUsersList() {
-        usersList = (List) userService.getAll();
+        usersList = (List) userService.findAll();
         return usersList;
     }
 

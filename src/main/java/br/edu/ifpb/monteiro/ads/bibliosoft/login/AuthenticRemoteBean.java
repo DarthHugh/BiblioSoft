@@ -1,10 +1,9 @@
 package br.edu.ifpb.monteiro.ads.bibliosoft.login;
 
-import javax.ejb.Stateless;
+import br.edu.ifpb.monteiro.ads.bibliosoft.entities.UserBibliosoft;
+import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.UserBiblioSoftServiceIF;
 import javax.enterprise.context.RequestScoped;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
+import javax.inject.Inject;
 /**
  *
  * @author vanderlan
@@ -12,27 +11,21 @@ import javax.persistence.PersistenceContext;
 @RequestScoped
 public class AuthenticRemoteBean implements AuthenticRemote {
 
-    @PersistenceContext(unitName = "BIBLIOSOFT-PU")
-    private EntityManager entityManager;
+    @Inject
+    private UserBiblioSoftServiceIF userServ;
 
     @Override
     public boolean authentic(String login, String password) {
 
-//        UserBibliosoft user = new UserBibliosoft();
-//        user.setPassword(password);
-//        user.setRegistration(login);
-//
-//        UserBibliosoft find = entityManager.find(UserBibliosoft.class, user);
-//
-//        if (find.getId() != null) {
-//            return true;
-//        } else {
-//            return "admin".equals(login) && "admin".equals(password);
-//
-//        }
-//
-//    }
-        return "admin".equals(login) && "admin".equals(password);
-
+        for (UserBibliosoft user : userServ.getAll()) {
+            if (user.getRegistration().equals(login)
+                    && user.getPassword().equals(password)) {
+                return true;
+            }
+        }
+        if( !(login.equals("admin")) ){
+            return false;
+        }
+        return login.equals("admin") && password.equals("admin");
     }
 }

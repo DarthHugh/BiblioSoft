@@ -29,7 +29,7 @@ public class MaterialBean implements Serializable {
     }
 
     public List<Material> getMaterials() {
-        materials = (List) materialUtil.getAll();
+        materials = (List) materialUtil.findAll();
         return materials;
     }
 

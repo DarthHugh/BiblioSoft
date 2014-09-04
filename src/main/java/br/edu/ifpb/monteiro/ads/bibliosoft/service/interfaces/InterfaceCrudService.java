@@ -17,6 +17,6 @@ public interface InterfaceCrudService {
     
     public void save(IdentifiableBiblio entity);
     public void remove(IdentifiableBiblio entity);
-    public List<IdentifiableBiblio> getAll();
+    public List<IdentifiableBiblio> findAll();
     public void update(IdentifiableBiblio entity);
 }

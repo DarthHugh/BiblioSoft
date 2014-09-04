@@ -6,10 +6,14 @@
 
 package br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces;
 
+import br.edu.ifpb.monteiro.ads.bibliosoft.entities.UserBibliosoft;
+import java.util.List;
+
 /**
  *
  * @author matheusoliveira
  */
 public interface UserBiblioSoftServiceIF extends InterfaceCrudService{
     
+    public List<UserBibliosoft> getAll();
 }

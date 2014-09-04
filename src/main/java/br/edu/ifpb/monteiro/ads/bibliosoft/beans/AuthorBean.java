@@ -39,7 +39,7 @@ public class AuthorBean implements Serializable {
     }
 
     public List<Author> getAuthors() {
-        authors = (List) authorService.getAll();
+        authors = (List) authorService.findAll();
         return authors;
     }
 
