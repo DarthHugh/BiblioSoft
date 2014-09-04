@@ -15,14 +15,14 @@
         <div align="center">
             <p:layout fullPage="true" style="margin: 0px; " >  
                 <p:layoutUnit position="north"  size="240 ">  
-                   
+
                     <f:metadata>
                         <f:viewParam name="id_menu" value="#{resquestMenu.idMenu}" />
                     </f:metadata>
                     <p:fieldset style="margin: 0px;height: 91%; border-color: #FFF;border: 0px; 
                                 background-image: url(../images/biblioSoft.jpg); background-position: center;">
                         <h:form>  
-                            
+
                             <p:menubar style="margin-top: 40px;background-image:url(../images/linha.jpg);
                                        background-position: top; ">
 
@@ -37,6 +37,11 @@
                                 <p:submenu label="Esmpréstimos" icon="ui-icon-pencil">
                                     <p:menuitem value="Novo empréstimo" url="/borrowing/newborrowing.xhtml" icon="ui-icon-circle-plus"/>
                                     <p:menuitem value="Ver empréstimos" icon="ui-icon-search"/>
+                                </p:submenu>
+
+                                <p:submenu label="Reservas" icon="ui-icon-pencil">
+                                    <p:menuitem value="Nova reserva" url="/booking/newbooking.xhtml" icon="ui-icon-circle-plus"/>
+                                    <p:menuitem value="Ver reservas" icon="ui-icon-search"/>
                                 </p:submenu>
 
                                 <p:submenu label="Usuários" icon="ui-icon-person">
@@ -58,7 +63,7 @@
                                     <p:button  value="Sair" icon="ui-icon-extlink" href="../login.xhtml" />
                                 </f:facet>
                             </p:menubar>
-                             <span id="logo">BiblioSoft</span>
+                            <span id="logo">BiblioSoft</span>
                         </h:form>
                     </p:fieldset>
 
@@ -67,11 +72,11 @@
                 <p:layoutUnit position="west" >  
                     <ui:insert name="left">
                         <p:fieldset legend="Últimos empréstimos" >
-                                - JAVA Como programar<br> </br>
-                                - Engenharia de software<br> </br>
-                                - Cormem Algorithms<br> </br>
-                                - Core Java<br> </br>
-                                - Use a Cabeça Desing Paterns
+                            - JAVA Como programar<br> </br>
+                            - Engenharia de software<br> </br>
+                            - Cormem Algorithms<br> </br>
+                            - Core Java<br> </br>
+                            - Use a Cabeça Desing Paterns
                         </p:fieldset>
                     </ui:insert>
                 </p:layoutUnit>  
