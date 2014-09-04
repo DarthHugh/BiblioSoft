@@ -10,14 +10,11 @@
                     <p:growl id="growUser" showDetail="false" />
 
                     <p:panelGrid columns="2" >
-                        <h:outputText value="ID: " />
-                        <p:inputText  value="#{materialBean.material.id}" required="true" 
-                                      placeholder="Id" requiredMessage="O campo Nome é obrigatório"/>
-                        <h:outputText value="Nome: " />
-                        <p:inputText  value="#{materialBean.material.name}" required="true" 
+                        <h:outputText value="Nome:" />
+                        <p:inputText  id="itNome" value="#{materialBean.material.name}" required="true" 
                                       placeholder="Nome" requiredMessage="O campo Nome é obrigatório"/>
                         <h:outputText value="Autores: " />
-                        <p:inputText  value="#{materialBean.material.authorMaterialList}" required="true" 
+                        <p:inputText  value="#{materialBean.material.listAuthorMaterial}" required="true" 
                                       placeholder="Autores" requiredMessage="O campo Nome é obrigatório"/>
                         <h:outputText value="Categora: " />
                         <p:inputText  value="#{materialBean.material.category}" required="true" 
@@ -29,7 +26,7 @@
                          <p:inputText  value="#{materialBean.material.year}" required="true" 
                                       placeholder="Ano" requiredMessage="O campo Nome é obrigatório"/>
                         <h:outputText value="Nº. Exemplares: " />
-                        <p:inputText  value="#{materialBean.material.copiesnumber}" required="true" 
+                        <p:inputText  value="#{materialBean.material.copiesNumber}" required="true" 
                                       placeholder="Número de Exemplares" requiredMessage="O campo Nome é obrigatório"/>
 
                     </p:panelGrid>

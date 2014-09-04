@@ -42,6 +42,7 @@ public class MaterialBean implements Serializable {
     }
 
     public String saveMaterial() {
+        System.out.println("DATABASE ----- BEAN MATERIAL");
         materialUtil.save(material);
         return "Materials";
     }
