@@ -1,7 +1,6 @@
 <html   xmlns="http://www.w3.org/1999/xhtml"
         xmlns:ui="http://java.sun.com/jsf/facelets"
         xmlns:h="http://java.sun.com/jsf/html"
-        xmlns:f="http://java.sun.com/jsf/core"
         xmlns:p="http://primefaces.org/ui">
     <ui:decorate template="../theme/patern.xhtml">
         <ui:define name="centro">
@@ -10,25 +9,40 @@
                     <p:growl id="growUser" showDetail="true" />
 
                     <p:panelGrid columns="2" >
+                        
                         <h:outputText value="Nome:" />
-                        <p:inputText  id="itNome" value="#{materialBean.material.name}" required="true" 
+                        <p:inputText  id="itNome" value="#{materialBean.material.name}" required="true" maxlength="50"
                                       placeholder="Nome" requiredMessage="O campo Nome é obrigatório"/>
+                        
                         <h:outputText value="Autores: " />
                         <p:inputText  value="#{materialBean.material.listAuthorMaterial}" required="true" 
-                                      placeholder="Autores" requiredMessage="O campo Nome é obrigatório"/>
-                        <h:outputText value="Categora: " />
-                        <p:inputText  value="#{materialBean.material.category}" required="true" 
-                                      placeholder="Categoria" requiredMessage="O campo Nome é obrigatório"/>
+                                      placeholder="Autores" requiredMessage="O campo Autores é obrigatório"/>
+                        
+                        <h:outputText value="Tipo do Material: " />
+                        <p:inputText  value="#{materialBean.material.type}" required="true" maxlength="11"
+                                      placeholder="Ex:livro, CD, Revista, Jornal" requiredMessage="O campo tipo do material é obrigatório"/>
+                        
+                        <h:outputText value="Categoria: " />
+                        <p:inputText  value="#{materialBean.material.category}" required="true" maxlength="20"
+                                      placeholder="Ex: Informática" requiredMessage="O campo Categoria é obrigatório"/>
+                        
                         <h:outputText value="Edição: " />
                         <p:inputText  value="#{materialBean.material.edition}" required="true" 
-                                      placeholder="Edição" requiredMessage="O campo Nome é obrigatório"/>
+                                      placeholder="Edição" requiredMessage="O campo Edição é obrigatório"/>
+                        
+                         <h:outputText value="Editora: " />
+                        <p:inputText  value="#{materialBean.material.publishingHouse}" required="true" maxlength="20"
+                                      placeholder="Editora" requiredMessage="O campo Editora é obrigatório"/>
+                        
                         <h:outputText value="Ano: " />
-                        <p:inputText  value="#{materialBean.material.year}" required="true" 
-                                      placeholder="Ano" requiredMessage="O campo Nome é obrigatório"/>
+                        <p:inputMask  value="#{materialBean.material.year}" required="true" mask="9999"
+                                     placeholder="Ano" requiredMessage="O campo Ano é obrigatório" />
+                        
+                        
                         <h:outputText value="Nº. Exemplares: " />
                         <p:inputText  value="#{materialBean.material.copiesNumber}"
                                       required="true" placeholder="Número de Exemplares"
-                                      requiredMessage="O campo Nome é obrigatório"/>
+                                      requiredMessage="O campo Nº. Exemplares é obrigatório"/>
 
                     </p:panelGrid>
                     <p:commandButton id="btSalvarMaterial" value="Entrar" icon="ui-icon-check" 
