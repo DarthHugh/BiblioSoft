@@ -1,7 +1,8 @@
 <html   xmlns="http://www.w3.org/1999/xhtml"
         xmlns:ui="http://java.sun.com/jsf/facelets"
         xmlns:h="http://java.sun.com/jsf/html"
-        xmlns:p="http://primefaces.org/ui">
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:decorate template="../theme/patern.xhtml">
 
@@ -14,9 +15,12 @@
                     <p:messages />
                     <p:panelGrid columns="2" >
 
-                        <h:outputText value="Material (AUTO COMPLETE): " />
-                        <p:inputText  id="material" required="true" placeholder="Material" 
-                                      requiredMessage="O campo Material é obrigatório" size="40"/>
+                        <h:outputLabel value="Material: "  />
+                        <p:selectOneMenu id="materialId" value="#{materialBean.material.id}"
+                                         required="true" requiredMessage=""
+                                         converter="generic">
+                            <f:selectItems value="#{materialBean.allMaterials}"/>
+                        </p:selectOneMenu>
 
                         <h:outputText value="Usuário (AUTO COMPLETE): " />
                         <p:inputText  id="user" required="true" placeholder="Usuário" 
