@@ -5,7 +5,6 @@ import br.edu.ifpb.monteiro.ads.bibliosoft.interfacedao.AbstractDAOIF;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.transaction.Transactional;
 
 /**
  *
@@ -24,7 +23,6 @@ public abstract class AbstractDAO< T extends IdentifiableBiblio> implements Abst
 
     @Override
     public void create(IdentifiableBiblio entity) {
-        System.out.println("DATABASE ---- " + entity.getClass());
         getEntityManager().persist(entity);
     }
 
