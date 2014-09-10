@@ -1,30 +1,58 @@
 <html   xmlns="http://www.w3.org/1999/xhtml"
         xmlns:ui="http://java.sun.com/jsf/facelets"
         xmlns:h="http://java.sun.com/jsf/html"
-        xmlns:f="http://java.sun.com/jsf/core"
         xmlns:p="http://primefaces.org/ui">
 
-    <ui:decorate template="../theme/patern.xhtml">
+    <ui:decorate template="../theme/patern.xhtml" >
         <ui:define name="centro">
 
-            <f:view>
+            <p:fieldset legend="Lista de Materias" >
+
                 <h:form>
-                    <p:dataTable var="material" value="#{materialBean.materials}">
-                        <f:facet name="header">
-                            Lista de Materiais
-                        </f:facet>
-                        <p:column headerText="ID" sortBy="#{materialBean.material.id}">
-                            <h:outputText value="#{materialBean.material.id}"/>
+                    <p:messages/>
+
+                    <p:dataTable var="material" value="#{materialBean.materials}" id="dt" scrollable="true" scrollHeight="240">
+
+                        <p:column headerText="Codigo" width="50" filterBy="#{material.id}" filterMaxLength="5" filterStyle="max-width: 30px; min-width: 50px;" >
+                            <h:outputText value="#{material.id}"/>
                         </p:column>
-                        <p:column headerText="Nome" sortBy="#{materialBean.material.name}">
-                            <h:outputText value="#{materialBean.material.name}"/>
+
+                        <p:column headerText="Nome"  filterBy="#{material.name}" filterMaxLength="10" >
+                            <h:outputText value="#{material.name}"/>
                         </p:column>
+
+                        <p:column headerText="Autor"  >
+                            <h:outputText value="#"/>
+                        </p:column>
+
+                        <p:column headerText="Tipo"  filterBy="#{material.type}" filterMaxLength="10" filterStyle="max-width: 30px; min-width: 60px;">
+                            <h:outputText value="#{material.type}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Categoria"  filterBy="#{material.category}" filterMaxLength="10" filterStyle="max-width: 30px; min-width: 60px;">
+                            <h:outputText value="#{material.category}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Edição"  filterBy="#{material.edition}" filterMaxLength="10" filterStyle="max-width: 30px; min-width: 60px;">
+                            <h:outputText value="#{material.edition}"/>
+                        </p:column>
+
+                        <p:column headerText="Editora"  filterBy="#{material.publishingHouse}" filterMaxLength="10" filterStyle="max-width: 30px; min-width: 60px;">
+                            <h:outputText value="#{material.publishingHouse}"/>
+                        </p:column>
+
+                        <p:column headerText="Ano"  filterBy="#{material.year}" filterMaxLength="10" filterStyle="max-width: 30px; min-width: 60px;">
+                            <h:outputText value="#{material.year}"/>
+                        </p:column>
+
+                        <p:column headerText="Nº Copias"  filterBy="#{material.copiesNumber}" filterMaxLength="10" filterStyle="max-width: 30px; min-width: 60px;">
+                            <h:outputText value="#{material.copiesNumber}"/>
+                        </p:column>
+
+
                     </p:dataTable>
                 </h:form>
-            </f:view>
-
-
-
+            </p:fieldset>
 
         </ui:define>
     </ui:decorate>
