@@ -3,6 +3,7 @@ package br.edu.ifpb.monteiro.ads.bibliosoft.service;
 
 import br.edu.ifpb.monteiro.ads.bibliosoft.interfacedao.AbstractDAOIF;
 import br.edu.ifpb.monteiro.ads.bibliosoft.interfacedao.AuthorDAOIF;
+import br.edu.ifpb.monteiro.ads.bibliosoft.dao.qualifiers.QualifierAuthorDAO;
 import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.AuthorServiceIF;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -15,6 +16,7 @@ import javax.inject.Inject;
 public class AuthorService extends AbstractService implements AuthorServiceIF{
     
     @Inject
+    @QualifierAuthorDAO
     private AuthorDAOIF authorDAO;
     
       @Override

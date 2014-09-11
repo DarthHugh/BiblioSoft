@@ -2,7 +2,7 @@ package br.edu.ifpb.monteiro.ads.bibliosoft.dao;
 
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.Author;
 import br.edu.ifpb.monteiro.ads.bibliosoft.interfacedao.AuthorDAOIF;
-import javax.enterprise.context.RequestScoped;
+import br.edu.ifpb.monteiro.ads.bibliosoft.dao.qualifiers.QualifierAuthorDAO;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author vanderlan
  */
-@RequestScoped
+@QualifierAuthorDAO
 public class AuthorDAO extends AbstractDAO<Author> implements AuthorDAOIF{
 
     

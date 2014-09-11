@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package br.edu.ifpb.monteiro.ads.bibliosoft.qualifers;
+package br.edu.ifpb.monteiro.ads.bibliosoft.dao.qualifiers;
 
 import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.ElementType.FIELD;
@@ -22,5 +22,5 @@ import javax.inject.Qualifier;
 @Qualifier
 @Retention(RUNTIME)
 @Target({METHOD, FIELD, PARAMETER, TYPE})
-public @interface QualiferMaterial {
+public @interface QualifierBookCaseDAO {
 }

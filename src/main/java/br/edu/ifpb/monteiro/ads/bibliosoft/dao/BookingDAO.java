@@ -2,7 +2,7 @@ package br.edu.ifpb.monteiro.ads.bibliosoft.dao;
 
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.Booking;
 import br.edu.ifpb.monteiro.ads.bibliosoft.interfacedao.BookingDAOIF;
-import javax.enterprise.context.RequestScoped;
+import br.edu.ifpb.monteiro.ads.bibliosoft.dao.qualifiers.QualifierBookingDAO;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author jefferson
  */
-@RequestScoped
+@QualifierBookingDAO
 public class BookingDAO extends AbstractDAO<Booking> implements BookingDAOIF {
 
     @PersistenceContext(unitName = "BIBLIOSOFT-PU")

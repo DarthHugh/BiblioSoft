@@ -1,5 +1,6 @@
 package br.edu.ifpb.monteiro.ads.bibliosoft.entities;
 
+import br.edu.ifpb.monteiro.ads.bibliosoft.entities.qualifiers.QualifierBookCase;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
@@ -17,7 +18,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "bookcase")
-
+@QualifierBookCase
 public class BookCase implements IdentifiableBiblio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -2,7 +2,7 @@ package br.edu.ifpb.monteiro.ads.bibliosoft.dao;
 
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.Borrowing;
 import br.edu.ifpb.monteiro.ads.bibliosoft.interfacedao.BorrowingDAOIF;
-import javax.enterprise.context.RequestScoped;
+import br.edu.ifpb.monteiro.ads.bibliosoft.dao.qualifiers.QualifierBorrowingDAO;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author jefferson
  */
-@RequestScoped
+@QualifierBorrowingDAO
 public class BorrowingDAO extends AbstractDAO<Borrowing>
         implements BorrowingDAOIF {
 

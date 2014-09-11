@@ -1,7 +1,7 @@
 
 package br.edu.ifpb.monteiro.ads.bibliosoft.entities;
 
-import java.io.Serializable;
+import br.edu.ifpb.monteiro.ads.bibliosoft.entities.qualifiers.QualifierAuthorMaterial;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,6 +17,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "author_material")
+@QualifierAuthorMaterial
 public class AuthorMaterial implements IdentifiableBiblio {
     
     @Id

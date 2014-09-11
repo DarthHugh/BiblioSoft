@@ -1,5 +1,6 @@
 package br.edu.ifpb.monteiro.ads.bibliosoft.entities;
 
+import br.edu.ifpb.monteiro.ads.bibliosoft.entities.qualifiers.QualifierAuthor;
 import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -10,6 +11,7 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name="author")
+@QualifierAuthor
 public class Author implements IdentifiableBiblio {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)

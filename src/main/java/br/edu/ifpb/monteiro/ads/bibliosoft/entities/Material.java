@@ -1,6 +1,7 @@
 
 package br.edu.ifpb.monteiro.ads.bibliosoft.entities;
 
+import br.edu.ifpb.monteiro.ads.bibliosoft.entities.qualifiers.QualifierMaterial;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
@@ -17,6 +18,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "material")
+@QualifierMaterial
 public class Material implements IdentifiableBiblio {
    
     @Id

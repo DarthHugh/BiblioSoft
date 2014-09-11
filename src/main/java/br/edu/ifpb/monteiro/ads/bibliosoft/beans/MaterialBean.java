@@ -5,7 +5,7 @@ import br.edu.ifpb.monteiro.ads.bibliosoft.entities.Material;
 import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.MaterialServiceIF;
 import java.io.Serializable;
 import java.util.List;
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -14,7 +14,7 @@ import javax.inject.Named;
  * @author jefferson
  */
 @Named(value = "materialBean")
-@SessionScoped
+@RequestScoped
 public class MaterialBean implements Serializable {
    
     @Inject

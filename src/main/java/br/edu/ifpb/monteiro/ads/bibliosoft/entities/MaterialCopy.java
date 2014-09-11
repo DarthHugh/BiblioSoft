@@ -1,7 +1,7 @@
 
 package br.edu.ifpb.monteiro.ads.bibliosoft.entities;
 
-import java.io.Serializable;
+import br.edu.ifpb.monteiro.ads.bibliosoft.entities.qualifiers.QualifierMaterialCopy;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,6 +19,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "materialcopy")
+@QualifierMaterialCopy
 public class MaterialCopy implements IdentifiableBiblio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

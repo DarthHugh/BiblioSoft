@@ -1,6 +1,7 @@
 
 package br.edu.ifpb.monteiro.ads.bibliosoft.entities;
 
+import br.edu.ifpb.monteiro.ads.bibliosoft.entities.qualifiers.QualifierUserBibliosoft;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +18,7 @@ import javax.validation.constraints.Pattern;
  */
 @Entity
 @Table(name = "userbibliosoft")
+@QualifierUserBibliosoft
 public class UserBibliosoft implements IdentifiableBiblio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

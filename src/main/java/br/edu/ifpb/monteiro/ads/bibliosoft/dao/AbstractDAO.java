@@ -3,6 +3,7 @@ package br.edu.ifpb.monteiro.ads.bibliosoft.dao;
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.IdentifiableBiblio;
 import br.edu.ifpb.monteiro.ads.bibliosoft.interfacedao.AbstractDAOIF;
 import java.util.List;
+import javax.enterprise.context.Dependent;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaQuery;
 
@@ -11,6 +12,7 @@ import javax.persistence.criteria.CriteriaQuery;
  * @author jefferson
  * @param <T>
  */
+@Dependent
 public abstract class AbstractDAO< T extends IdentifiableBiblio> implements AbstractDAOIF {
 
     private Class<T> entityClass;

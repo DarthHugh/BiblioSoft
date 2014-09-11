@@ -1,6 +1,8 @@
 package br.edu.ifpb.monteiro.ads.bibliosoft.beans;
 
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.Author;
+import br.edu.ifpb.monteiro.ads.bibliosoft.entities.IdentifiableBiblio;
+import br.edu.ifpb.monteiro.ads.bibliosoft.entities.qualifiers.QualifierAuthor;
 import br.edu.ifpb.monteiro.ads.bibliosoft.service.AuthorService;
 import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.AuthorServiceIF;
 import java.io.Serializable;
@@ -22,8 +24,9 @@ public class AuthorBean implements Serializable {
 
     private List<Author> authors;
     
-    
-    private Author author = new Author();
+    @Inject
+    @QualifierAuthor
+    private IdentifiableBiblio author;
 
     public AuthorBean() {
     }
@@ -43,7 +46,7 @@ public class AuthorBean implements Serializable {
         return authors;
     }
 
-    public Author getAuthor() {
+    public IdentifiableBiblio getAuthor() {
         return author;
     }
 

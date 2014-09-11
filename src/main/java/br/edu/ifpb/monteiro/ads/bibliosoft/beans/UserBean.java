@@ -2,6 +2,7 @@ package br.edu.ifpb.monteiro.ads.bibliosoft.beans;
 
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.IdentifiableBiblio;
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.UserBibliosoft;
+import br.edu.ifpb.monteiro.ads.bibliosoft.entities.qualifiers.QualifierUserBibliosoft;
 import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.UserBiblioSoftServiceIF;
 import java.io.Serializable;
 import java.util.List;
@@ -21,8 +22,9 @@ public class UserBean implements Serializable {
     private UserBiblioSoftServiceIF userService;
 
     private List<UserBibliosoft> usersList;
-
-    private IdentifiableBiblio userbibliosoft = new UserBibliosoft();
+    @Inject
+    @QualifierUserBibliosoft
+    private IdentifiableBiblio userbibliosoft;
 
     public UserBean() {
     }

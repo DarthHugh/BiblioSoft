@@ -2,7 +2,7 @@ package br.edu.ifpb.monteiro.ads.bibliosoft.dao;
 
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.AuthorMaterial;
 import br.edu.ifpb.monteiro.ads.bibliosoft.interfacedao.AuthorMaterialDAOIF;
-import javax.enterprise.context.RequestScoped;
+import br.edu.ifpb.monteiro.ads.bibliosoft.dao.qualifiers.QualifierAuthorMaterialDAO;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author jefferson
  */
-@RequestScoped
+@QualifierAuthorMaterialDAO
 public class AuthorMaterialDAO extends AbstractDAO<AuthorMaterial> implements AuthorMaterialDAOIF {
 
     @PersistenceContext(unitName = "BIBLIOSOFT-PU")
