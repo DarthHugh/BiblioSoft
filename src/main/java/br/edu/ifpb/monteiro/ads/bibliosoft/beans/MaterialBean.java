@@ -1,4 +1,3 @@
-
 package br.edu.ifpb.monteiro.ads.bibliosoft.beans;
 
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.Material;
@@ -16,11 +15,10 @@ import javax.inject.Named;
 @Named(value = "materialBean")
 @RequestScoped
 public class MaterialBean implements Serializable {
-   
+
     @Inject
     private MaterialServiceIF materialService;
 
-   
     private List<Material> materials;
 
     private Material material = new Material();
@@ -44,5 +42,13 @@ public class MaterialBean implements Serializable {
     public String saveMaterial() {
         materialService.save(material);
         return "Materials";
+    }
+
+    public void remove() {
+        materialService.remove(material);
+    }
+
+    public void update() {
+        materialService.update(material);
     }
 }

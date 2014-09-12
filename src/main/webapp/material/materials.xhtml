@@ -1,58 +1,104 @@
 <html   xmlns="http://www.w3.org/1999/xhtml"
         xmlns:ui="http://java.sun.com/jsf/facelets"
         xmlns:h="http://java.sun.com/jsf/html"
-        xmlns:p="http://primefaces.org/ui">
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:decorate template="../theme/patern.xhtml" >
         <ui:define name="centro">
-
-            <p:fieldset legend="Lista de Materias" >
-
-                <h:form>
-                    <p:messages/>
-
-                    <p:dataTable var="material" value="#{materialBean.materials}" id="dt" scrollable="true" scrollHeight="240">
-
-                        <p:column headerText="Codigo" width="50" filterBy="#{material.id}" filterMaxLength="5" filterStyle="max-width: 30px; min-width: 50px;" >
+            
+            <f:view>
+                <h:form id="materials">
+                    <p:dataTable var="material" value="#{materialBean.materials}" paginator="true" style="width: 99%;"
+                                 rows="5" rowsPerPageTemplate="5,10,15,20,30,50"
+                                 rowKey="#{material}" selectionMode="single"
+                                 selection="#{materialBean.material}" paginatorAlwaysVisible="false">
+                        
+                        <p:ajax event="rowSelect"  update=":materials:materialDetail" 
+                                oncomplete="PF('materialDialog').show()" />
+                        
+                        <f:facet name="header">
+                            Lista de Materiais
+                        </f:facet>
+                        
+                        <p:column headerText="Codigo: " sortBy="#{material.id}" filterBy="#{material.id}">
                             <h:outputText value="#{material.id}"/>
                         </p:column>
-
-                        <p:column headerText="Nome"  filterBy="#{material.name}" filterMaxLength="10" >
+                        
+                        <p:column headerText="Nome"  sortBy="#{material.name}" filterBy="#{material.name}" >
                             <h:outputText value="#{material.name}"/>
                         </p:column>
 
                         <p:column headerText="Autor"  >
                             <h:outputText />
                         </p:column>
-                        
-                        <p:column headerText="Tipo"  filterBy="#{material.type}" filterMaxLength="10" filterStyle="max-width: 30px; min-width: 60px;">
+
+                        <p:column headerText="Tipo"  sortBy="#{material.type}" filterBy="#{material.type}">
                             <h:outputText value="#{material.type}"/>
                         </p:column>
-                        
-                        <p:column headerText="Categoria"  filterBy="#{material.category}" filterMaxLength="10" filterStyle="max-width: 30px; min-width: 60px;">
+
+                        <p:column headerText="Categoria" sortBy="#{material.category}" filterBy="#{material.category}" >
                             <h:outputText value="#{material.category}"/>
                         </p:column>
-                        
-                        <p:column headerText="Edição"  filterBy="#{material.edition}" filterMaxLength="10" filterStyle="max-width: 30px; min-width: 60px;">
+
+                        <p:column headerText="Edição"  sortBy="#{material.edition}" filterBy="#{material.edition}" >
                             <h:outputText value="#{material.edition}"/>
                         </p:column>
 
-                        <p:column headerText="Editora"  filterBy="#{material.publishingHouse}" filterMaxLength="10" filterStyle="max-width: 30px; min-width: 60px;">
+                        <p:column headerText="Editora"  sortBy="#{material.publishingHouse}" filterBy="#{material.publishingHouse}" >
                             <h:outputText value="#{material.publishingHouse}"/>
                         </p:column>
 
-                        <p:column headerText="Ano"  filterBy="#{material.year}" filterMaxLength="10" filterStyle="max-width: 30px; min-width: 60px;">
+                        <p:column headerText="Ano"  sortBy="#{material.year}" filterBy="#{material.year}" >
                             <h:outputText value="#{material.year}"/>
                         </p:column>
 
-                        <p:column headerText="Nº Copias"  filterBy="#{material.copiesNumber}" filterMaxLength="10" filterStyle="max-width: 30px; min-width: 60px;">
+                        <p:column headerText="Nº Copias"  sortBy="#{material.copiesNumber}" filterBy="#{material.copiesNumber}" >
                             <h:outputText value="#{material.copiesNumber}"/>
                         </p:column>
-
-
+                        
                     </p:dataTable>
+
+                    <p:dialog header="Material" widgetVar="materialDialog" modal="false" 
+                              showEffect="fade" hideEffect="fade" resizable="false">
+
+                        <p:outputPanel id="materialDetail" style="text-align: center">
+                            <p:panelGrid columns="2"  columnClasses="label, value">
+                                
+                                <h:outputText value="Codigo"/>
+                                <p:inputText value="#{materialBean.material.id}"/>
+                                <h:outputText value="Nome"/>
+                                <p:inputText value="#{materialBean.material.name}"/>
+                                <h:outputText value="Autor"/>
+                                <p:inputText value="#{materialBean.material.listAuthorMaterial}"/>
+                                <h:outputText value="Tipo"/>
+                                <p:inputText value="#{materialBean.material.type}"/>
+                                <h:outputText value="Categoria"/>
+                                <p:inputText value="#{materialBean.material.category}"/>
+                                <h:outputText value="Edição"/>
+                                <p:inputText value="#{materialBean.material.edition}"/>
+                                <h:outputText value="Editora"/>
+                                <p:inputText value="#{materialBean.material.publishingHouse}"/>
+                                <h:outputText value="Ano"/>
+                                <p:inputText value="#{materialBean.material.year}"/>
+                                <h:outputText value="Nº Copias"/>
+                                <p:inputText value="#{materialBean.material.copiesNumber}"/>                             
+
+                            </p:panelGrid>
+                            
+                            <h:panelGroup style="width: 100%; padding: 5px; margin: 5px" >
+                                
+                                <p:commandButton value="Remover" action="#{materialBean.remove}" style="padding: 5px; margin: 5px"/>
+                                <p:commandButton value="Atualizar" action="#{materialBean.update}" style="padding: 5px;"/>
+                                
+                            </h:panelGroup>
+                            
+                        </p:outputPanel>
+                    </p:dialog>
                 </h:form>
-            </p:fieldset>
+            </f:view>
+            
+            
 
         </ui:define>
     </ui:decorate>
