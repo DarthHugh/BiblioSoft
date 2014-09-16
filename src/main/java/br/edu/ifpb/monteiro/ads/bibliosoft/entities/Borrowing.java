@@ -2,6 +2,7 @@
 package br.edu.ifpb.monteiro.ads.bibliosoft.entities;
 
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.qualifiers.QualifierBooking;
+import br.edu.ifpb.monteiro.ads.bibliosoft.entities.qualifiers.QualifierBorrowing;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,7 +20,7 @@ import javax.persistence.Temporal;
  */
 @Entity
 @Table(name = "borrowing")
-@QualifierBooking
+@QualifierBorrowing
 public class Borrowing implements IdentifiableBiblio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
