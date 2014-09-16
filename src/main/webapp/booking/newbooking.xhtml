@@ -18,32 +18,32 @@
                         <h:outputLabel value="Material: "  />
                         <p:selectOneMenu id="materialId" filter="true"
                                          filterMatchMode="startsWith"
-                                         value="#{materialBean.material.id}"
                                          required="true" requiredMessage="Campo MATERIAL vazio"
                                          converter="generic">
-                            <f:selectItems value="#{materialBean.materials}"
-                                           var="material" itemLabel="#{material.name}"/>
+                            <f:selectItems id="materialSelected" value="#{materialBean.materials}"
+                                           var="material" itemLabel="#{material.name}"
+                                           />
                         </p:selectOneMenu>
 
                         <h:outputText value="Usuário (AUTO COMPLETE): " />
                         <p:selectOneMenu id="usuarioId"
                                          filter="true" filterMatchMode="startsWith"
-                                         value="#{userBean.userbibliosoft.id}"
                                          required="true" requiredMessage="Campo USUARIO vazio"
                                          converter="generic">
                             <f:selectItems value="#{userBean.usersList}"
-                                           var="user" itemLabel="#{user.name}"/>
+                                           var="user" itemLabel="#{user.name}"
+                                           itemValue="#{user}"/>
                         </p:selectOneMenu>
 
                         <h:outputText value="Data da Reserva:" /> 
-                        <p:calendar id="receipt_date" effect="fade" required="true" immediate="true"
+                        <p:calendar value="#{bookingBean.booking.dateBooking}" id="receipt_date" effect="fade" required="true" immediate="true"
                                     effectDuration="2" 
                                     requiredMessage="O campo data da reserva é obrigatório" />                    
 
 
                     </p:panelGrid>
                     <p:commandButton id="okButton" value="OK" icon="ui-icon-check"  
-                                     update="growBooking" action="#{materialBean.saveMaterial}" />  
+                                     update="growBooking" action="#{bookingBean.save}"/>  
 
                 </h:form>   
             </p:fieldset>

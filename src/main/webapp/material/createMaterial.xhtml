@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:p="http://primefaces.org/ui">
+    <ui:decorate template="../theme/patern.xhtml">
+        <ui:define name="centro"> 
+            <p:fieldset legend="Cadastro de Material">
+
+                <h:form id="insertMaterial" >
+                    <p:growl id="growMaterial" showDetail="false" />
+
+                    <p:messages />
+                    <p:panelGrid columns="2" >
+                        <h:outputText value="Nome: " />
+                        <p:inputText  value="#{materialBean.material.name}" 
+                                      id="name" required="true" placeholder="Nome" 
+                                      requiredMessage="O campo Nome é obrigatório"
+                                      size="40"/>
+                        <h:outputText value="Categoria: "/>
+                        <p:inputText value="#{materialBean.material.category}" 
+                                     id="category" required="true" 
+                                     placeholder="Categoria"
+                                     requiredMessage="O campo categoria é obrigatório"
+                                     size="20"/>
+                        <h:outputText value="Editora: "/>
+                        <p:inputText value="#{materialBean.material.publishingHouse}"
+                                     id="publishinghouse" required="true"
+                                     placeholder="Editora"
+                                     requiredMessage="Campo editora obrigatorio"
+                                     size="20"/>
+                        <h:outputText value="Ano: "/>
+                        <p:inputMask value="#{materialBean.material.year}"
+                                     id="year" required="true"
+                                     placeholder="Ano Publicação"
+                                     requiredMessage="Campo Ano Obrigatorio"
+                                     mask="9999"/>
+                        <h:outputText value="Tipo: "/>
+                        <p:inputText value="#{materialBean.material.type}"
+                                     id="type" required="true"
+                                     requiredMessage="Campo tipo obrigatorio"
+                                     placeholder="Revista, Livro, etc..."/>
+                        <h:outputText value="Exemplares: "/>
+                        <p:inputText value="#{materialBean.material.copiesNumber}"
+                                     id="copyNumber" required="true"
+                                     placeholder="Quantidade Copias"
+                                     requiredMessage="Campo Exemplares Obrigatorio"
+                                     size="20"/>
+                        <h:outputText value="Edição: "/>
+                        <p:inputText value="#{materialBean.material.edition}"
+                                     id="edition" required="true"
+                                     placeholder="Edição"
+                                     requiredMessage="Campo Edição Obrigatorio"
+                                     size="20"/>
+                    </p:panelGrid>
+                    <p:commandButton id="okButton" value="OK" icon="ui-icon-check"  
+
+                                     update="growMaterial" action="#{materialBean.saveMaterial}" />  
+
+                </h:form>   
+            </p:fieldset>
+        </ui:define>
+    </ui:decorate>
+</html>
