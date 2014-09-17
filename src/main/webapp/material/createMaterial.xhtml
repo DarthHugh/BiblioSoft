@@ -3,7 +3,8 @@
 <html   xmlns="http://www.w3.org/1999/xhtml"
         xmlns:ui="http://java.sun.com/jsf/facelets"
         xmlns:h="http://java.sun.com/jsf/html"
-        xmlns:p="http://primefaces.org/ui">
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:decorate template="../theme/patern.xhtml">
         <ui:define name="centro"> 
             <p:fieldset legend="Cadastro de Material">
@@ -18,6 +19,18 @@
                                       id="name" required="true" placeholder="Nome" 
                                       requiredMessage="O campo Nome é obrigatório"
                                       size="40"/>
+                        <h:outputText value="Autores: "/>
+                        <p:selectManyMenu id="listauthor" filter="true"
+                                          filterMatchMode="contains"
+                                          showCheckbox="true"
+                                          converter="generic"
+                                          value="#{materialBean.material.listFKAuthor}">
+                            <f:selectItems id="autoreslista" value="#{authorBean.authors}"
+                                           var="author" itemLabel="#{author.name}"
+                                           itemValue="#{materialBean.material.listFKAuthor}"
+                                           />
+                            
+                        </p:selectManyMenu>
                         <h:outputText value="Categoria: "/>
                         <p:inputText value="#{materialBean.material.category}" 
                                      id="category" required="true" 

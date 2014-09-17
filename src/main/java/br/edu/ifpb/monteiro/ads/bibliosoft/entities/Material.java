@@ -27,8 +27,8 @@ public class Material implements IdentifiableBiblio {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     
-    @ManyToMany @JoinColumn(name = "fkMaterial") 
-    private List<Author> fkAuthor;
+    @ManyToMany @JoinColumn(name = "listFKMaterial") 
+    private List<Author> listFKAuthor;
     
     @OneToMany(mappedBy="idMaterial")
     private List<MaterialCopy> listMaterialCopy;
@@ -74,12 +74,12 @@ public class Material implements IdentifiableBiblio {
         this.id = id;
     }
 
-    public List<Author> getfkAuthor() {
-        return fkAuthor;
+    public List<Author> getListFKAuthor() {
+        return listFKAuthor;
     }
 
-    public void setfkAuthor(List<Author> fkAuthor) {
-        this.fkAuthor = fkAuthor;
+    public void setListFKAuthor(List<Author> listFKAuthor) {
+        this.listFKAuthor = listFKAuthor;
     }
 
     public List<MaterialCopy> getListMaterialCopy() {

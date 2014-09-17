@@ -2,6 +2,7 @@ package br.edu.ifpb.monteiro.ads.bibliosoft.entities;
 
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.qualifiers.QualifierAuthor;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,8 +25,8 @@ public class Author implements IdentifiableBiblio {
     @Column(name ="id")
     private Long id;
     
-    @ManyToMany(mappedBy="fkAuthor")
-    private List<Material> fkMaterial;
+    @ManyToMany(mappedBy="listFKAuthor")
+    private List<Material> listFKMaterial;
     
     @Column(name="name", length=50)
     @NotNull
@@ -64,16 +65,41 @@ public class Author implements IdentifiableBiblio {
     /**
      * @return the listAuthorMaterial
      */
-    public List<Material> getFkMaterial() {
-        return fkMaterial;
+    public List<Material> getListFKMaterial() {
+        return listFKMaterial;
     }
 
     /**
-     * @param fkMaterial the listAuthorMaterial to set
+     * @param listFKMaterial the listAuthorMaterial to set
      */
-    public void setListMaterial(List<Material> fkMaterial) {
-        this.fkMaterial = fkMaterial;
+    public void setListFKMaterial(List<Material> listFKMaterial) {
+        this.listFKMaterial = listFKMaterial;
     }
 
+     @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Author other = (Author) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 71 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
     
+    
+    
+
+
 }
