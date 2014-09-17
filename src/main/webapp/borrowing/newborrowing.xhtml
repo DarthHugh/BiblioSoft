@@ -13,12 +13,29 @@
 
                     <p:messages />
                     <p:panelGrid columns="2" >
-                        <h:outputText value="Material (AUTO COMPLETE): " />
-                        <p:inputText  id="material" required="true" placeholder="Material" 
-                                      requiredMessage="O campo Material é obrigatório" size="40"/>
-                        <h:outputText value="Usuário (AUTO COMPLETE): " />
-                        <p:inputText  id="user" required="true" placeholder="Usuário" 
-                                      requiredMessage="O campo Usuário é obrigatório" size="40"/>
+                        
+<!--                Falta criar na logica a copia do material        
+                    <h:outputLabel value="Material: "  />
+                        <p:selectOneMenu id="materialId" filter="true"
+                                         filterMatchMode="startsWith"
+                                         value="{borrowingBean.borrowing.idMaterialCopy}"
+                                         required="true" requiredMessage="Campo MATERIAL vazio"
+                                         converter="generic">
+                            <f:selectItems id="materialSelected" value="{materialBean.materials}"
+                                           var="material" itemLabel="{material.name}"
+                                           itemValue="{bookingBean.booking.idMaterial}"
+                                           />
+                        </p:selectOneMenu>-->
+                        <h:outputText value="Usuário: " />
+                        <p:selectOneMenu id="usuarioId"
+                                         filter="true" filterMatchMode="startsWith"
+                                         value="#{borrowingBean.borrowing.idUser}"
+                                         required="true" requiredMessage="Campo USUARIO vazio"
+                                         converter="generic">
+                            <f:selectItems id="usuarioselected" value="#{userBean.usersList}"
+                                           var="user" itemLabel="#{user.name}"
+                                           itemValue="#{borrowingBean.borrowing.idUser}"/>
+                        </p:selectOneMenu>
                         <h:outputText value="Data do empréstimo:" /> 
                         <p:calendar id="receipt_date" effect="fade" required="true" immediate="true"
                                     effectDuration="2"
@@ -30,7 +47,7 @@
 
                     </p:panelGrid>
                     <p:commandButton id="okButton" value="OK" icon="ui-icon-check"  
-                                     update="growBorrowing" />  
+                                     update="growBorrowing" action="#{borrowingBean.save}" />  
 
                 </h:form>   
             </p:fieldset>
