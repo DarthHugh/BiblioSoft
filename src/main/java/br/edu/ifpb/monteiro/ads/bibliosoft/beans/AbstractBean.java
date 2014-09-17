@@ -22,4 +22,8 @@ public abstract class AbstractBean {
         getService().save(getIdentifiableBiblio());
     }
     
+    public void remove(){
+        getService().remove(getIdentifiableBiblio());
+    }
+    
 }

@@ -3,8 +3,8 @@ package br.edu.ifpb.monteiro.ads.bibliosoft.beans;
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.IdentifiableBiblio;
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.UserBibliosoft;
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.qualifiers.QualifierUserBibliosoft;
+import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.InterfaceCrudService;
 import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.UserBiblioSoftServiceIF;
-import java.io.Serializable;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -16,7 +16,7 @@ import javax.inject.Named;
  */
 @Named(value = "userBean")
 @RequestScoped
-public class UserBean implements Serializable {
+public class UserBean extends AbstractBean {
 
     @Inject
     private UserBiblioSoftServiceIF userService;
@@ -42,21 +42,18 @@ public class UserBean implements Serializable {
         return usersList;
     }
 
-    public String saveUserbibliosoft() {
-        userService.save(userbibliosoft);
-        return "users";
+    public void update() {
+        userService.update(userbibliosoft);
     }
-    
-    public void dellUserbibliosoft() {
-        userService.remove(userbibliosoft);
+
+    @Override
+    public InterfaceCrudService getService() {
+        return this.userService;
     }
-    
-  public void remove() {
-      userService.remove(userbibliosoft);
-  }
-  
-  public void update () {
-      userService.update(userbibliosoft);
-  }
-  
+
+    @Override
+    public IdentifiableBiblio getIdentifiableBiblio() {
+        return this.userbibliosoft;
+    }
+
 }

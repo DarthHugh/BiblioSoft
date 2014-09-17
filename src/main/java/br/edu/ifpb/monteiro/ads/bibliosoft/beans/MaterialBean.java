@@ -3,8 +3,8 @@ package br.edu.ifpb.monteiro.ads.bibliosoft.beans;
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.IdentifiableBiblio;
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.Material;
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.qualifiers.QualifierMaterial;
+import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.InterfaceCrudService;
 import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.MaterialServiceIF;
-import java.io.Serializable;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -16,7 +16,7 @@ import javax.inject.Named;
  */
 @Named(value = "materialBean")
 @RequestScoped
-public class MaterialBean implements Serializable {
+public class MaterialBean extends AbstractBean{
 
     @Inject
     private MaterialServiceIF materialService;
@@ -43,16 +43,17 @@ public class MaterialBean implements Serializable {
         this.material = material;
     }
 
-    public String saveMaterial() {
-        materialService.save(material);
-        return "materials";
-    }
-
-    public void remove() {
-        materialService.remove(material);
-    }
-
     public void update() {
         materialService.update(material);
+    }
+
+    @Override
+    public InterfaceCrudService getService() {
+        return this.materialService;
+    }
+
+    @Override
+    public IdentifiableBiblio getIdentifiableBiblio() {
+        return this.material;
     }
 }

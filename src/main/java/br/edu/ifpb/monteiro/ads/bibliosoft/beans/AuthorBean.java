@@ -5,7 +5,7 @@ import br.edu.ifpb.monteiro.ads.bibliosoft.entities.IdentifiableBiblio;
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.qualifiers.QualifierAuthor;
 import br.edu.ifpb.monteiro.ads.bibliosoft.service.AuthorService;
 import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.AuthorServiceIF;
-import java.io.Serializable;
+import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.InterfaceCrudService;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -17,7 +17,7 @@ import javax.inject.Named;
  */
 @Named(value = "authorBean")
 @RequestScoped
-public class AuthorBean implements Serializable {
+public class AuthorBean extends AbstractBean{
     
     @Inject
     private AuthorServiceIF authorService;
@@ -30,8 +30,6 @@ public class AuthorBean implements Serializable {
 
     public AuthorBean() {
     }
-    
-    
 
     public AuthorServiceIF getAuthorService() {
         return authorService;
@@ -54,19 +52,19 @@ public class AuthorBean implements Serializable {
         this.author = author;
     }
 
-    public String save() {
-        authorService.save(author);
-        return "authors";
-    }
-
-    public void remove() {
-        
-        authorService.remove(author);
-    }
-
     public String update() {
         authorService.update(author);
         return "authors";
+    }
+
+    @Override
+    public InterfaceCrudService getService() {
+        return this.authorService;
+    }
+
+    @Override
+    public IdentifiableBiblio getIdentifiableBiblio() {
+        return this.author;
     }
 
 

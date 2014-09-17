@@ -10,7 +10,7 @@ import br.edu.ifpb.monteiro.ads.bibliosoft.entities.Booking;
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.IdentifiableBiblio;
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.qualifiers.QualifierBooking;
 import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.BookingServiceIF;
-import java.io.Serializable;
+import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.InterfaceCrudService;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -20,7 +20,7 @@ import javax.inject.Named;
  */
 @Named("bookingBean")
 @RequestScoped
-public class BookingBean implements Serializable{
+public class BookingBean extends AbstractBean{
     
     @Inject
     private BookingServiceIF bookingService;
@@ -40,8 +40,14 @@ public class BookingBean implements Serializable{
         this.booking = booking;
     }
     
-    public void save(){
-        bookingService.save(booking);
+    @Override
+    public InterfaceCrudService getService() {
+        return this.bookingService;
+    }
+
+    @Override
+    public IdentifiableBiblio getIdentifiableBiblio() {
+        return this.booking;
     }
     
 }
