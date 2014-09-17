@@ -16,7 +16,7 @@
                                  rowKey="#{borriwing}" selectionMode="single"
                                  selection="#{borrowingBean.borrowing}" paginatorAlwaysVisible="false">
 
-                        <p:ajax event="rowSelect"  update=":borrowings:borriwingDetail" 
+                        <p:ajax event="rowSelect"  update=":borrowings:borrowingDetail" 
                                 oncomplete="PF('borrowingDialog').show()" />
 
                         <f:facet name="header">
@@ -48,8 +48,8 @@
 
                             <h:panelGroup style="width: 100%; padding: 5px; margin: 5px" >
 
-                                <p:commandButton value="Remover" action="#{borrowingBean.remove}" style="padding: 5px; margin: 5px"/>
-                                <p:commandButton value="Atualizar" action="#{borrowingBean.update}" style="padding: 5px;"/>
+                                <p:commandButton value="Remover" action="#" style="padding: 5px; margin: 5px"/>
+                                <p:commandButton value="Atualizar" action="#" style="padding: 5px;"/>
 
                             </h:panelGroup>
 
