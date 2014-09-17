@@ -1,6 +1,5 @@
 package br.edu.ifpb.monteiro.ads.bibliosoft.beans;
 
-import br.edu.ifpb.monteiro.ads.bibliosoft.entities.Author;
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.IdentifiableBiblio;
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.Material;
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.qualifiers.QualifierMaterial;
@@ -24,17 +23,11 @@ public class MaterialBean implements Serializable {
 
     private List<Material> materials;
     
-    private List<Author> autores;
-
     @Inject
     @QualifierMaterial
     private IdentifiableBiblio material;
 
     public MaterialBean() {
-    }
-
-    public List<Author> getAutores(){
-        return this.autores;
     }
     
     public List<Material> getMaterials() {
@@ -51,7 +44,6 @@ public class MaterialBean implements Serializable {
     }
 
     public String saveMaterial() {
-        System.out.println("DATABASE---- SALVANDO MATERIAL");
         materialService.save(material);
         return "materials";
     }
