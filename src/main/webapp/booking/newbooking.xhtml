@@ -18,21 +18,23 @@
                         <h:outputLabel value="Material: "  />
                         <p:selectOneMenu id="materialId" filter="true"
                                          filterMatchMode="startsWith"
+                                         value="#{bookingBean.booking.idMaterial}"
                                          required="true" requiredMessage="Campo MATERIAL vazio"
                                          converter="generic">
                             <f:selectItems id="materialSelected" value="#{materialBean.materials}"
                                            var="material" itemLabel="#{material.name}"
+                                           itemValue="#{bookingBean.booking.idMaterial}"
                                            />
                         </p:selectOneMenu>
-
-                        <h:outputText value="Usuário (AUTO COMPLETE): " />
+                        <h:outputText value="Usuário: " />
                         <p:selectOneMenu id="usuarioId"
                                          filter="true" filterMatchMode="startsWith"
+                                         value="#{bookingBean.booking.idUser}"
                                          required="true" requiredMessage="Campo USUARIO vazio"
                                          converter="generic">
-                            <f:selectItems value="#{userBean.usersList}"
+                            <f:selectItems id="usuarioselected" value="#{userBean.usersList}"
                                            var="user" itemLabel="#{user.name}"
-                                           itemValue="#{user}"/>
+                                           itemValue="#{bookingBean.booking.idUser}"/>
                         </p:selectOneMenu>
 
                         <h:outputText value="Data da Reserva:" /> 
