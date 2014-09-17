@@ -26,6 +26,7 @@
                                            itemValue="{bookingBean.booking.idMaterial}"
                                            />
                         </p:selectOneMenu>-->
+
                         <h:outputText value="Usuário: " />
                         <p:selectOneMenu id="usuarioId"
                                          filter="true" filterMatchMode="startsWith"
@@ -36,6 +37,7 @@
                                            var="user" itemLabel="#{user.name}"
                                            itemValue="#{borrowingBean.borrowing.idUser}"/>
                         </p:selectOneMenu>
+                        
                         <h:outputText value="Data do empréstimo:" /> 
                         <p:calendar id="receipt_date" effect="fade" required="true" immediate="true"
                                     effectDuration="2"
@@ -46,6 +48,7 @@
                                     requiredMessage="O campo data de devolução é obrigatório" />                    
 
                     </p:panelGrid>
+                    
                     <p:commandButton id="okButton" value="OK" icon="ui-icon-check"  
                                      update="growBorrowing" action="#{borrowingBean.save}" />  
 
