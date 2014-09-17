@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -25,13 +27,13 @@ public class Material implements IdentifiableBiblio {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     
-    @OneToMany(mappedBy="idMaterial") // I think it's missing something, like Author_Material.class. you know?
-    private List<AuthorMaterial> listAuthorMaterial;
+    @ManyToMany @JoinColumn(name = "fkMaterial") 
+    private List<Author> fkAuthor;
     
-    @OneToMany(mappedBy="idMaterial") // I think it's missing something, like MaterialCopy.class. you know?
+    @OneToMany(mappedBy="idMaterial")
     private List<MaterialCopy> listMaterialCopy;
     
-    @OneToMany(mappedBy="idMaterial") // I think it's missing something, like Booking.class. you know?
+    @OneToMany(mappedBy="idMaterial")
     private List<Booking> listBookingCopy;
     
     @Column(name="material_type", length=11, nullable=false)
@@ -72,12 +74,12 @@ public class Material implements IdentifiableBiblio {
         this.id = id;
     }
 
-    public List<AuthorMaterial> getListAuthorMaterial() {
-        return listAuthorMaterial;
+    public List<Author> getfkAuthor() {
+        return fkAuthor;
     }
 
-    public void setListAuthorMaterial(List<AuthorMaterial> listAuthorMaterial) {
-        this.listAuthorMaterial = listAuthorMaterial;
+    public void setfkAuthor(List<Author> fkAuthor) {
+        this.fkAuthor = fkAuthor;
     }
 
     public List<MaterialCopy> getListMaterialCopy() {

@@ -2,7 +2,13 @@ package br.edu.ifpb.monteiro.ads.bibliosoft.entities;
 
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.qualifiers.QualifierAuthor;
 import java.util.List;
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -18,8 +24,8 @@ public class Author implements IdentifiableBiblio {
     @Column(name ="id")
     private Long id;
     
-    @OneToMany(mappedBy="idAuthor") // I think it's missing something, like Author_Material.class. you know?
-    private List<AuthorMaterial> listAuthorMaterial;
+    @ManyToMany(mappedBy="fkAuthor")
+    private List<Material> fkMaterial;
     
     @Column(name="name", length=50)
     @NotNull
@@ -58,15 +64,15 @@ public class Author implements IdentifiableBiblio {
     /**
      * @return the listAuthorMaterial
      */
-    public List<AuthorMaterial> getListAuthorMaterial() {
-        return listAuthorMaterial;
+    public List<Material> getFkMaterial() {
+        return fkMaterial;
     }
 
     /**
-     * @param listAuthorMaterial the listAuthorMaterial to set
+     * @param fkMaterial the listAuthorMaterial to set
      */
-    public void setListAuthorMaterial(List<AuthorMaterial> listAuthorMaterial) {
-        this.listAuthorMaterial = listAuthorMaterial;
+    public void setListMaterial(List<Material> fkMaterial) {
+        this.fkMaterial = fkMaterial;
     }
 
     
