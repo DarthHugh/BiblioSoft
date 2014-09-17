@@ -1,6 +1,7 @@
 package br.edu.ifpb.monteiro.ads.bibliosoft.beans;
 
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.Material;
+import br.edu.ifpb.monteiro.ads.bibliosoft.entities.qualifiers.QualifierMaterial;
 import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.MaterialServiceIF;
 import java.io.Serializable;
 import java.util.List;
@@ -21,7 +22,9 @@ public class MaterialBean implements Serializable {
 
     private List<Material> materials;
 
-    private Material material = new Material();
+    @Inject
+    @QualifierMaterial
+    private Material material;
 
     public MaterialBean() {
     }
