@@ -32,11 +32,8 @@ public class MaterialCopy implements IdentifiableBiblio {
     @ManyToOne @JoinColumn(name="id_material")
     private Material idMaterial;
     
-    @ManyToOne @JoinColumn(name="id_bookcase")
-    private BookCase idBookcase;
-    
-    @Column(name="shelf", nullable=false)
-    private int shelf;
+    @Column(name="bookcase", nullable=false, length = 7)
+    private String bookcase;
     
     @Column(name="borrowing", nullable=false)
     private boolean borrowing;
@@ -48,10 +45,10 @@ public class MaterialCopy implements IdentifiableBiblio {
         this.id = id;
     }
 
-    public MaterialCopy(Long id, boolean borrowing, int shelf) {
+    public MaterialCopy(Long id, boolean borrowing, String bookcase) {
         this.id = id;
         this.borrowing = borrowing;
-        this.shelf = shelf;
+        this.bookcase = bookcase;
     }
 
     @Override
@@ -72,12 +69,12 @@ public class MaterialCopy implements IdentifiableBiblio {
         this.borrowing = borrowing;
     }
 
-    public int getShelf() {
-        return shelf;
+    public String getBookcase() {
+        return this.bookcase;
     }
 
-    public void setShelf(int shelf) {
-        this.shelf = shelf;
+    public void setBookcase(String bookcase) {
+        this.bookcase = bookcase;
     }
 
     public List<Borrowing> getListBorrowing() {
@@ -94,14 +91,6 @@ public class MaterialCopy implements IdentifiableBiblio {
 
     public void setIdMaterial(Material idMaterial) {
         this.idMaterial = idMaterial;
-    }
-
-    public BookCase getIdBookcase() {
-        return idBookcase;
-    }
-
-    public void setIdBookcase(BookCase idBookcase) {
-        this.idBookcase = idBookcase;
     }
 
     @Override
