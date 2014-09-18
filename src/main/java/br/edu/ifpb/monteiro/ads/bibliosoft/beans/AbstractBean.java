@@ -8,6 +8,8 @@ package br.edu.ifpb.monteiro.ads.bibliosoft.beans;
 
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.IdentifiableBiblio;
 import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.InterfaceCrudService;
+import br.edu.ifpb.monteiro.ads.bibliosoft.util.implemetes.JsfUtil;
+import java.util.ResourceBundle;
 
 /**
  *
@@ -19,7 +21,13 @@ public abstract class AbstractBean {
     public abstract IdentifiableBiblio getIdentifiableBiblio();
     
     public void save(){
-        getService().save(getIdentifiableBiblio());
+        try{
+            getService().save(getIdentifiableBiblio());
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("SaveSuccesfull"));
+        }catch(Exception e){
+            JsfUtil.addErrorMessage(e,ResourceBundle.getBundle("/Bundle").getString("SaveError"));
+
+        }
     }
     
     public void remove(){
