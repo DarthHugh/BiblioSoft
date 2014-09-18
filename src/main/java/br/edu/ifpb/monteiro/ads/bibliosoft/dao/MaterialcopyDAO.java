@@ -2,7 +2,7 @@ package br.edu.ifpb.monteiro.ads.bibliosoft.dao;
 
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.MaterialCopy;
 import br.edu.ifpb.monteiro.ads.bibliosoft.interfacedao.MaterialCopyDAOIF;
-import br.edu.ifpb.monteiro.ads.bibliosoft.dao.qualifiers.QualifierMaterialCopy;
+import br.edu.ifpb.monteiro.ads.bibliosoft.dao.qualifiers.QualifierMaterialCopyDAO;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author jefferson
  */
-@QualifierMaterialCopy
+@QualifierMaterialCopyDAO
 public class MaterialcopyDAO extends AbstractDAO<MaterialCopy>
         implements MaterialCopyDAOIF {
 
