@@ -56,4 +56,8 @@ public class MaterialBean extends AbstractBean{
     public IdentifiableBiblio getIdentifiableBiblio() {
         return this.material;
     }
+    @Override
+    public void limparForm() {
+        setMaterial(new Material());
+    }
 }

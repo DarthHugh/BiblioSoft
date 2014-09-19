@@ -50,4 +50,9 @@ public class BookingBean extends AbstractBean{
         return this.booking;
     }
     
+    @Override
+    public void limparForm(){
+        setBooking(new Booking());
+    }
+
 }

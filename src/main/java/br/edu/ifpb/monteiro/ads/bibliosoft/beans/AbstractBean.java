@@ -19,10 +19,12 @@ public abstract class AbstractBean {
     
     public abstract InterfaceCrudService getService();
     public abstract IdentifiableBiblio getIdentifiableBiblio();
+    public abstract void limparForm();
     
     public void save(){
         try{
             getService().save(getIdentifiableBiblio());
+            limparForm();
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("SaveSuccesfull"));
         }catch(Exception e){
             JsfUtil.addErrorMessage(e,ResourceBundle.getBundle("/Bundle").getString("SaveError"));

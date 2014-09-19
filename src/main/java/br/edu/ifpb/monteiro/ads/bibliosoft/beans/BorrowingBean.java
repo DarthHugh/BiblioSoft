@@ -53,4 +53,8 @@ public class BorrowingBean extends AbstractBean{
     public IdentifiableBiblio getIdentifiableBiblio() {
         return this.borrowing;
     }
+    @Override
+    public void limparForm() {
+        setBorrowing(new Borrowing());
+    }
 }

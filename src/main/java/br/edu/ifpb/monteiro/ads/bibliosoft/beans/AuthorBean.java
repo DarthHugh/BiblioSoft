@@ -66,8 +66,12 @@ public class AuthorBean extends AbstractBean{
     public IdentifiableBiblio getIdentifiableBiblio() {
         return this.author;
     }
-
-
+    
+    @Override
+    public void limparForm(){
+        setAuthor(new Author());
+    }
+    
     
     
 }
