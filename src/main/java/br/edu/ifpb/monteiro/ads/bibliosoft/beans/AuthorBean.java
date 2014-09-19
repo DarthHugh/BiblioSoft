@@ -69,7 +69,7 @@ public class AuthorBean extends AbstractBean{
     
     @Override
     public void limparForm(){
-        setAuthor(new Author());
+        setAuthor(null);
     }
     
     
