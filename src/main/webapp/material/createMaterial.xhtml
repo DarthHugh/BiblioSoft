@@ -20,9 +20,9 @@
                                       requiredMessage="O campo Nome é obrigatório"
                                       size="40"/>
                         <h:outputText value="Autores: "/>
-                        <p:selectManyMenu id="listauthor" filter="true"
-                                          filterMatchMode="contains"
-                                          showCheckbox="true"
+                        <p:selectCheckboxMenu id="listauthor" filter="true"
+                                              label="Autores"
+                                          filterMatchMode="contains"                                          
                                           converter="generic"
                                           value="#{materialBean.material.listFKAuthor}">
                             <f:selectItems id="autoreslista" value="#{authorBean.authors}"
@@ -30,7 +30,7 @@
                                            itemValue="#{materialBean.material.listFKAuthor}"
                                            />
                             
-                        </p:selectManyMenu>
+                        </p:selectCheckboxMenu>
                         <h:outputText value="Categoria: "/>
                         <p:inputText value="#{materialBean.material.category}" 
                                      id="category" required="true" 
@@ -65,6 +65,12 @@
                                      id="edition" required="true"
                                      placeholder="Edição"
                                      requiredMessage="Campo Edição Obrigatorio"
+                                     size="20"/>
+                        <h:outputText value="Estante: "/>
+                        <p:inputText value="#{materialCopyBean.materialcopy.bookcase}"
+                                     id="bookcase" required="true"
+                                     placeholder="Estante"
+                                     requiredMessage="Campo Estante Obrigatorio"
                                      size="20"/>
                     </p:panelGrid>
                     <p:commandButton id="okButton" value="OK" icon="ui-icon-check"  

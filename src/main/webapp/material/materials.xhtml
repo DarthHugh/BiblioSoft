@@ -57,6 +57,10 @@
                             <h:outputText value="#{material.copiesNumber}"/>
                         </p:column>
                         
+                        <p:column headerText="Estante"  sortBy="#{materialCopy.bookcase}" filterBy="#{materialCopy.bookcase}" >
+                            <h:outputText value="#{materialCopy.bookcase}"/>
+                        </p:column>
+                        
                     </p:dataTable>
 
                     <p:dialog header="Material" widgetVar="materialDialog" modal="false" 
