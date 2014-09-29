@@ -23,9 +23,6 @@ public class AuthenticRemoteBean implements AuthenticRemote {
                 return true;
             }
         }
-        if( !(login.equals("admin")) ){
-            return false;
-        }
-        return login.equals("admin") && password.equals("admin");
+        return false;
     }
 }

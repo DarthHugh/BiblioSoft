@@ -67,7 +67,7 @@
                                      requiredMessage="Campo Edição Obrigatorio"
                                      size="20"/>
                         <h:outputText value="Estante: "/>
-                        <p:inputText value="#{materialCopyBean.materialcopy.bookcase}"
+                        <p:inputText value="#{materialCopyBean.materialCopy.bookcase}"
                                      id="bookcase" required="true"
                                      placeholder="Estante"
                                      requiredMessage="Campo Estante Obrigatorio"
@@ -75,7 +75,8 @@
                     </p:panelGrid>
                     <p:commandButton id="okButton" value="OK" icon="ui-icon-check"  
 
-                                     update="growMaterial" action="#{materialBean.save}" />  
+                                     update="growMaterial" action="#{materialBean.save}"
+                                     ajax="false"/>  
 
                 </h:form>   
             </p:fieldset>

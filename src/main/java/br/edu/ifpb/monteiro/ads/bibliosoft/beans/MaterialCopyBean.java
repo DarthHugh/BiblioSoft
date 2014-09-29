@@ -33,11 +33,11 @@ public class MaterialCopyBean extends AbstractBean{
     public MaterialCopyBean() {
     }
     
-    public IdentifiableBiblio getMaterial() {
+    public IdentifiableBiblio getMaterialCopy() {
         return materialCopy;
     }
 
-    public void setMaterial(MaterialCopy materialCopy) {
+    public void setMaterialCopy(MaterialCopy materialCopy) {
         this.materialCopy = materialCopy;
     }
 
@@ -47,17 +47,17 @@ public class MaterialCopyBean extends AbstractBean{
 
     @Override
     public InterfaceCrudService getService() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.materialCopyService;
     }
 
     @Override
     public IdentifiableBiblio getIdentifiableBiblio() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.materialCopy;
     }
 
     @Override
     public void limparForm() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.setMaterialCopy(null);
     }
     
 }
