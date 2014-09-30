@@ -6,9 +6,11 @@
 package br.edu.ifpb.monteiro.ads.bibliosoft.service;
 
 import br.edu.ifpb.monteiro.ads.bibliosoft.dao.qualifiers.QualifierMaterialCopyDAO;
-import br.edu.ifpb.monteiro.ads.bibliosoft.interfacedao.AbstractDAOIF;
-import br.edu.ifpb.monteiro.ads.bibliosoft.interfacedao.MaterialCopyDAOIF;
+import br.edu.ifpb.monteiro.ads.bibliosoft.dao.interfaces.AbstractDAOIF;
+import br.edu.ifpb.monteiro.ads.bibliosoft.dao.interfaces.MaterialCopyDAOIF;
+import br.edu.ifpb.monteiro.ads.bibliosoft.entities.MaterialCopy;
 import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.MaterialCopyServiceIF;
+import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
@@ -25,6 +27,11 @@ public class MaterialCopyService extends AbstractService implements MaterialCopy
     @Override
     protected AbstractDAOIF getDao() {
         return this.materialCopyDao;
+    }
+
+    @Override
+    public List<MaterialCopy> findAllNotBorrowing() {
+        return this.materialCopyDao.findAllNotBorrowing();
     }
     
 }

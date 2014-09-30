@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpb.monteiro.ads.bibliosoft.interfacedao;
-
+package br.edu.ifpb.monteiro.ads.bibliosoft.dao.interfaces;
 
 /**
  *
  * @author jefferson
  */
-public interface BookingDAOIF extends AbstractDAOIF{
-    
+public interface BorrowingDAOIF extends AbstractDAOIF{
+
 }

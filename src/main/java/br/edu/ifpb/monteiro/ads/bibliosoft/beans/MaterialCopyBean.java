@@ -40,6 +40,10 @@ public class MaterialCopyBean extends AbstractBean{
         return materialCopys = (List) getService().findAll();
     }
     
+    public List<MaterialCopy> findAllNotBorrowing(){
+        return  materialCopyService.findAllNotBorrowing();
+    }
+    
     public IdentifiableBiblio getMaterialCopy() {
         return materialCopy;
     }

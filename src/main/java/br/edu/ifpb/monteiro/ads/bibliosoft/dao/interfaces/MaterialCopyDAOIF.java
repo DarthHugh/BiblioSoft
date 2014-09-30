@@ -3,16 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces;
+package br.edu.ifpb.monteiro.ads.bibliosoft.dao.interfaces;
 
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.MaterialCopy;
 import java.util.List;
 
 /**
  *
- * @author matheusoliveira
+ * @author jefferson
  */
-public interface MaterialCopyServiceIF extends InterfaceCrudService{
+public interface MaterialCopyDAOIF extends AbstractDAOIF{
     
     public List<MaterialCopy> findAllNotBorrowing();
+    
 }

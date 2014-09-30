@@ -20,7 +20,7 @@
                                          value="#{borrowingBean.borrowing.idMaterialCopy}"
                                          required="true" requiredMessage="Campo MATERIAL vazio"
                                          converter="generic">
-                            <f:selectItems id="materialSelected" value="#{materialCopyBean.materialCopys}"
+                            <f:selectItems id="materialSelected" value="#{materialCopyBean.findAllNotBorrowing()}"
                                            var="material" itemLabel="#{material.idMaterial.name}"
                                            itemValue="#{borrowingBean.borrowing.idMaterialCopy}"
                                            />

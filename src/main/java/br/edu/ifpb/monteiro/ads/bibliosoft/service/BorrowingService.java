@@ -6,8 +6,8 @@
 package br.edu.ifpb.monteiro.ads.bibliosoft.service;
 
 import br.edu.ifpb.monteiro.ads.bibliosoft.dao.qualifiers.QualifierBorrowingDAO;
-import br.edu.ifpb.monteiro.ads.bibliosoft.interfacedao.AbstractDAOIF;
-import br.edu.ifpb.monteiro.ads.bibliosoft.interfacedao.BorrowingDAOIF;
+import br.edu.ifpb.monteiro.ads.bibliosoft.dao.interfaces.AbstractDAOIF;
+import br.edu.ifpb.monteiro.ads.bibliosoft.dao.interfaces.BorrowingDAOIF;
 import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.BorrowingServiceIF;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;

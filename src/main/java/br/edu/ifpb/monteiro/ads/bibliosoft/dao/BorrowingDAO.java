@@ -1,7 +1,7 @@
 package br.edu.ifpb.monteiro.ads.bibliosoft.dao;
 
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.Borrowing;
-import br.edu.ifpb.monteiro.ads.bibliosoft.interfacedao.BorrowingDAOIF;
+import br.edu.ifpb.monteiro.ads.bibliosoft.dao.interfaces.BorrowingDAOIF;
 import br.edu.ifpb.monteiro.ads.bibliosoft.dao.qualifiers.QualifierBorrowingDAO;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

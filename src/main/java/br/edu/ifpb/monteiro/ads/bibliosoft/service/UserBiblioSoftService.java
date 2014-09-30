@@ -1,8 +1,8 @@
 package br.edu.ifpb.monteiro.ads.bibliosoft.service;
 
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.UserBibliosoft;
-import br.edu.ifpb.monteiro.ads.bibliosoft.interfacedao.AbstractDAOIF;
-import br.edu.ifpb.monteiro.ads.bibliosoft.interfacedao.UserBibliosoftDAOIF;
+import br.edu.ifpb.monteiro.ads.bibliosoft.dao.interfaces.AbstractDAOIF;
+import br.edu.ifpb.monteiro.ads.bibliosoft.dao.interfaces.UserBibliosoftDAOIF;
 import br.edu.ifpb.monteiro.ads.bibliosoft.dao.qualifiers.QualifierUserBibliosofDAO;
 import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.UserBiblioSoftServiceIF;
 import java.util.List;

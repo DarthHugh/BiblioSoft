@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpb.monteiro.ads.bibliosoft.interfacedao;
+package br.edu.ifpb.monteiro.ads.bibliosoft.dao.interfaces;
 
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.IdentifiableBiblio;
 import java.util.List;

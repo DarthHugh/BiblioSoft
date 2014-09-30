@@ -1,7 +1,7 @@
 package br.edu.ifpb.monteiro.ads.bibliosoft.dao;
 
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.Material;
-import br.edu.ifpb.monteiro.ads.bibliosoft.interfacedao.MaterialDAOIF;
+import br.edu.ifpb.monteiro.ads.bibliosoft.dao.interfaces.MaterialDAOIF;
 import br.edu.ifpb.monteiro.ads.bibliosoft.dao.qualifiers.QualifierMaterialDAO;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

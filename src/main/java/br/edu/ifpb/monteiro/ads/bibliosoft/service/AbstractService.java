@@ -7,7 +7,7 @@
 package br.edu.ifpb.monteiro.ads.bibliosoft.service;
 
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.IdentifiableBiblio;
-import br.edu.ifpb.monteiro.ads.bibliosoft.interfacedao.AbstractDAOIF;
+import br.edu.ifpb.monteiro.ads.bibliosoft.dao.interfaces.AbstractDAOIF;
 import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.InterfaceCrudService;
 import java.util.List;
 import javax.transaction.Transactional;
@@ -27,6 +27,7 @@ public abstract class AbstractService implements InterfaceCrudService{
         
     }
     @Override
+    @Transactional
     public void remove(IdentifiableBiblio entity){
         getDao().remove(entity);
         
@@ -36,6 +37,7 @@ public abstract class AbstractService implements InterfaceCrudService{
         return getDao().findAll();
     }
     @Override
+    @Transactional
     public void update(IdentifiableBiblio entity){
         getDao().edit(entity);
     }

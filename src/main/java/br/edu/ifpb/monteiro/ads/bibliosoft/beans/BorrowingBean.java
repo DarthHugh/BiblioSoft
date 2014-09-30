@@ -7,10 +7,15 @@ package br.edu.ifpb.monteiro.ads.bibliosoft.beans;
 
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.Borrowing;
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.IdentifiableBiblio;
+import br.edu.ifpb.monteiro.ads.bibliosoft.entities.MaterialCopy;
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.qualifiers.QualifierBorrowing;
+import br.edu.ifpb.monteiro.ads.bibliosoft.entities.qualifiers.QualifierMaterialCopy;
 import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.BorrowingServiceIF;
 import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.InterfaceCrudService;
+import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.MaterialCopyServiceIF;
+import br.edu.ifpb.monteiro.ads.bibliosoft.util.implemetes.JsfUtil;
 import java.util.List;
+import java.util.ResourceBundle;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -28,14 +33,21 @@ public class BorrowingBean extends AbstractBean{
     
     @Inject
     @QualifierBorrowing
-    private IdentifiableBiblio borrowing;
+    private Borrowing borrowing;
     
     private List<Borrowing> borrowings;
+    
+    @Inject
+    private MaterialCopyServiceIF materialCopyService;
+    
+    @Inject
+    @QualifierMaterialCopy
+    private MaterialCopy materialCopy;
     
     public IdentifiableBiblio getBorrowing(){
         return this.borrowing;
     }
-    public void setBorrowing(IdentifiableBiblio borrowing){
+    public void setBorrowing(Borrowing borrowing){
         this.borrowing=borrowing;
     }
     
@@ -56,5 +68,21 @@ public class BorrowingBean extends AbstractBean{
     @Override
     public void limparForm() {
         setBorrowing(null);
+        materialCopy = null;
+    }
+    
+    @Override
+    public void save(){
+        try{
+            materialCopy = this.borrowing.getIdMaterialCopy();
+            materialCopy.setBorrowing(true);
+            getService().save(getIdentifiableBiblio());
+            this.materialCopyService.update(materialCopy);
+            limparForm();
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("SaveSuccesfull"));
+        }catch(Exception e){
+            JsfUtil.addErrorMessage(e,ResourceBundle.getBundle("/Bundle").getString("SaveError"));
+
+        }
     }
 }

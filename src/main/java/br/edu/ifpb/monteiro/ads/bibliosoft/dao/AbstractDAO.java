@@ -1,7 +1,7 @@
 package br.edu.ifpb.monteiro.ads.bibliosoft.dao;
 
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.IdentifiableBiblio;
-import br.edu.ifpb.monteiro.ads.bibliosoft.interfacedao.AbstractDAOIF;
+import br.edu.ifpb.monteiro.ads.bibliosoft.dao.interfaces.AbstractDAOIF;
 import java.util.List;
 import javax.enterprise.context.Dependent;
 import javax.persistence.EntityManager;
