@@ -11,6 +11,7 @@ import br.edu.ifpb.monteiro.ads.bibliosoft.entities.MaterialCopy;
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.qualifiers.QualifierMaterialCopy;
 import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.InterfaceCrudService;
 import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.MaterialCopyServiceIF;
+import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -25,12 +26,18 @@ public class MaterialCopyBean extends AbstractBean{
     
     @Inject
     private MaterialCopyServiceIF materialCopyService;
+    
+    private List<MaterialCopy> materialCopys;
         
     @Inject
     @QualifierMaterialCopy
     private IdentifiableBiblio materialCopy;
     
     public MaterialCopyBean() {
+    }
+    
+    public List<MaterialCopy> getMaterialCopys(){
+        return materialCopys = (List) getService().findAll();
     }
     
     public IdentifiableBiblio getMaterialCopy() {

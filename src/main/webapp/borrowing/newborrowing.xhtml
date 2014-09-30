@@ -14,18 +14,17 @@
                     <p:messages />
                     <p:panelGrid columns="2" >
                         
-<!--                Falta criar na logica a copia do material        
                     <h:outputLabel value="Material: "  />
                         <p:selectOneMenu id="materialId" filter="true"
                                          filterMatchMode="startsWith"
-                                         value="{borrowingBean.borrowing.idMaterialCopy}"
+                                         value="#{borrowingBean.borrowing.idMaterialCopy}"
                                          required="true" requiredMessage="Campo MATERIAL vazio"
                                          converter="generic">
-                            <f:selectItems id="materialSelected" value="{materialBean.materials}"
-                                           var="material" itemLabel="{material.name}"
-                                           itemValue="{bookingBean.booking.idMaterial}"
+                            <f:selectItems id="materialSelected" value="#{materialCopyBean.materialCopys}"
+                                           var="material" itemLabel="#{material.idMaterial.name}"
+                                           itemValue="#{borrowingBean.borrowing.idMaterialCopy}"
                                            />
-                        </p:selectOneMenu>-->
+                        </p:selectOneMenu>
 
                         <h:outputText value="Usuário: " />
                         <p:selectOneMenu id="usuarioId"
@@ -40,17 +39,19 @@
                         
                         <h:outputText value="Data do empréstimo:" /> 
                         <p:calendar id="receipt_date" effect="fade" required="true" immediate="true"
-                                    effectDuration="2"
+                                    effectDuration="2" value="#{borrowingBean.borrowing.receiptDate}"
                                     requiredMessage="O campo data de empréstimo é obrigatório" />                    
 
                         <h:outputText id="return_date" value="Data de devolução:" /> 
                         <p:calendar effect="fade" immediate="true" required="true" effectDuration="2"
+                                    value="#{borrowingBean.borrowing.returnDate}"
                                     requiredMessage="O campo data de devolução é obrigatório" />                    
 
                     </p:panelGrid>
                     
                     <p:commandButton id="okButton" value="OK" icon="ui-icon-check"  
-                                     update="growBorrowing" action="#{borrowingBean.save}" />  
+                                     update="growBorrowing" action="#{borrowingBean.save}"
+                                     ajax="false"/>  
 
                 </h:form>   
             </p:fieldset>
