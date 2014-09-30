@@ -12,7 +12,7 @@
                     <p:dataTable var="material" value="#{materialBean.materials}" paginator="true" style="width: 99%;"
                                  rows="5" rowsPerPageTemplate="5,10,15,20,30,50"
                                  rowKey="#{material}" selectionMode="single"
-                                 selection="#{materialBean.material}" paginatorAlwaysVisible="false">
+                                 selection="#{materialBean.material}" paginatorAlwaysVisible="true">
                         
                         <p:ajax event="rowSelect"  update=":materials:materialDetail" 
                                 oncomplete="PF('materialDialog').show()" />
@@ -21,11 +21,11 @@
                             Lista de Materiais
                         </f:facet>
                         
-                        <p:column headerText="Codigo: " sortBy="#{material.id}" filterBy="#{material.id}">
+                        <p:column headerText="Codigo: " filterMatchMode="contains" sortBy="#{material.id}" filterBy="#{material.id}">
                             <h:outputText value="#{material.id}"/>
                         </p:column>
                         
-                        <p:column headerText="Nome"  sortBy="#{material.name}" filterBy="#{material.name}" >
+                        <p:column headerText="Nome" filterMatchMode="contains"  sortBy="#{material.name}" filterBy="#{material.name}" >
                             <h:outputText value="#{material.name}"/>
                         </p:column>
 
@@ -33,31 +33,31 @@
                             <h:outputText />
                         </p:column>
 
-                        <p:column headerText="Tipo"  sortBy="#{material.type}" filterBy="#{material.type}">
+                        <p:column headerText="Tipo" filterMatchMode="contains"  sortBy="#{material.type}" filterBy="#{material.type}">
                             <h:outputText value="#{material.type}"/>
                         </p:column>
 
-                        <p:column headerText="Categoria" sortBy="#{material.category}" filterBy="#{material.category}" >
+                        <p:column headerText="Categoria" filterMatchMode="contains" sortBy="#{material.category}" filterBy="#{material.category}" >
                             <h:outputText value="#{material.category}"/>
                         </p:column>
 
-                        <p:column headerText="Edição"  sortBy="#{material.edition}" filterBy="#{material.edition}" >
+                        <p:column headerText="Edição" filterMatchMode="contains"  sortBy="#{material.edition}" filterBy="#{material.edition}" >
                             <h:outputText value="#{material.edition}"/>
                         </p:column>
 
-                        <p:column headerText="Editora"  sortBy="#{material.publishingHouse}" filterBy="#{material.publishingHouse}" >
+                        <p:column headerText="Editora" filterMatchMode="contains"  sortBy="#{material.publishingHouse}" filterBy="#{material.publishingHouse}" >
                             <h:outputText value="#{material.publishingHouse}"/>
                         </p:column>
 
-                        <p:column headerText="Ano"  sortBy="#{material.year}" filterBy="#{material.year}" >
+                        <p:column headerText="Ano" filterMatchMode="contains"  sortBy="#{material.year}" filterBy="#{material.year}" >
                             <h:outputText value="#{material.year}"/>
                         </p:column>
 
-                        <p:column headerText="Nº Copias"  sortBy="#{material.copiesNumber}" filterBy="#{material.copiesNumber}" >
+                        <p:column headerText="Nº Copias" filterMatchMode="contains"  sortBy="#{material.copiesNumber}" filterBy="#{material.copiesNumber}" >
                             <h:outputText value="#{material.copiesNumber}"/>
                         </p:column>
                         
-                        <p:column headerText="Estante"  sortBy="#{materialCopy.bookcase}" filterBy="#{materialCopy.bookcase}" >
+                        <p:column headerText="Estante" filterMatchMode="contains"  sortBy="#{materialCopy.bookcase}" filterBy="#{materialCopy.bookcase}" >
                             <h:outputText value="#{materialCopy.bookcase}"/>
                         </p:column>
                         
