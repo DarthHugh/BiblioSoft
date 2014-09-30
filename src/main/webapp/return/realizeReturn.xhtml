@@ -1,15 +1,44 @@
 <html   xmlns="http://www.w3.org/1999/xhtml"
         xmlns:ui="http://java.sun.com/jsf/facelets"
         xmlns:h="http://java.sun.com/jsf/html"
-        xmlns:p="http://primefaces.org/ui">
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:decorate template="../theme/patern.xhtml">
         <ui:define name="centro">
             <p:fieldset legend="Realizar Devolução">
-                <h:form id="returnMaterial" >
+                <h:form id="formReturn" >
                     <p:growl id="growReturn" showDetail="false" />
-
-                    <p:panelGrid columns="2" >
+                    
+                    <p:dataTable var="emprestimosAbertos" value="#{borrowingBean.findBorrowingNotReturn()}" paginator="true"
+                                 style="width: 99%" rows="5" rowsPerPageTemplate="5,10,20" rowKey="#{emprestimosAbertos}" selectionMode="single"
+                                 selection="#{borrowingBean.borrowing}" paginatorAlwaysVisible="true">
+                        
+                        <p:ajax event="rowSelect" update=":formReturn:emprestimoDialog" oncomplete="PF('emprestimoDialog').show()"/>
+                        
+                        <f:facet name="header" >
+                            Lista de Empréstimos Abertos
+                        </f:facet>
+                        
+                        <p:column headerText="nameUser">
+                            <h:outputLabel value="#{emprestimosAbertos.idUser.name}"/>
+                        </p:column>
+                        
+                        <p:column headerText="nameMaterial">
+                            <h:outputLabel value="#{emprestimosAbertos.idMaterialCopy.idMaterial.name}"/>
+                        </p:column>
+                    </p:dataTable>
+                    
+                    <p:dialog id="emprestimoDialog" header="Empréstimo" widgetVar="emprestimoDialog" modal="false" showEffect="fade" 
+                              resizable="false">
+                    <p:panelGrid columns="2" columnClasses="lable, value">
+                        
+                        
+                    <h:outputText title="Dar baixa no empréstimo"/>
+                    <!--<h:sele-->
+                        
+                        
                     </p:panelGrid>
+                    </p:dialog>
                 </h:form>
             </p:fieldset>
         </ui:define>

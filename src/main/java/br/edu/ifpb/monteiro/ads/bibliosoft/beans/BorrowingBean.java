@@ -9,7 +9,6 @@ import br.edu.ifpb.monteiro.ads.bibliosoft.entities.Borrowing;
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.IdentifiableBiblio;
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.MaterialCopy;
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.qualifiers.QualifierBorrowing;
-import br.edu.ifpb.monteiro.ads.bibliosoft.entities.qualifiers.QualifierMaterialCopy;
 import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.BorrowingServiceIF;
 import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.InterfaceCrudService;
 import br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces.MaterialCopyServiceIF;
@@ -40,9 +39,6 @@ public class BorrowingBean extends AbstractBean{
     @Inject
     private MaterialCopyServiceIF materialCopyService;
     
-    @Inject
-    @QualifierMaterialCopy
-    private MaterialCopy materialCopy;
     
     public IdentifiableBiblio getBorrowing(){
         return this.borrowing;
@@ -51,6 +47,12 @@ public class BorrowingBean extends AbstractBean{
         this.borrowing=borrowing;
     }
     
+    public List<Borrowing> findBorrowingNotReturn(){
+        List<Borrowing> findBorrowingNotReturn = borrowingService.findBorrowingNotReturn();
+        System.out.println(findBorrowingNotReturn.size());
+        return findBorrowingNotReturn;
+        
+    }
      public List<Borrowing> getBorrowings() {
         borrowings = (List) borrowingService.findAll();
         return borrowings;
@@ -68,13 +70,12 @@ public class BorrowingBean extends AbstractBean{
     @Override
     public void limparForm() {
         setBorrowing(null);
-        materialCopy = null;
     }
     
     @Override
     public void save(){
         try{
-            materialCopy = this.borrowing.getIdMaterialCopy();
+            MaterialCopy materialCopy = this.borrowing.getIdMaterialCopy();
             materialCopy.setBorrowing(true);
             getService().save(getIdentifiableBiblio());
             this.materialCopyService.update(materialCopy);
@@ -83,6 +84,14 @@ public class BorrowingBean extends AbstractBean{
         }catch(Exception e){
             JsfUtil.addErrorMessage(e,ResourceBundle.getBundle("/Bundle").getString("SaveError"));
 
+        }
+    }
+    public void returnMaterial(){
+        try {
+            borrowing.getIdMaterialCopy().setBorrowing(false);
+            this.materialCopyService.update(borrowing.getIdMaterialCopy());
+            
+        } catch (Exception e) {
         }
     }
 }
