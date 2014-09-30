@@ -55,6 +55,6 @@ public class BorrowingBean extends AbstractBean{
     }
     @Override
     public void limparForm() {
-        setBorrowing(new Borrowing());
+        setBorrowing(null);
     }
 }
