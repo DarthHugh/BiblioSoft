@@ -5,10 +5,15 @@
  */
 package br.edu.ifpb.monteiro.ads.bibliosoft.dao.interfaces;
 
+import br.edu.ifpb.monteiro.ads.bibliosoft.entities.Borrowing;
+import java.util.List;
+
 /**
  *
  * @author jefferson
  */
 public interface BorrowingDAOIF extends AbstractDAOIF{
+    
+    public List<Borrowing> findAllBorrowing();
 
 }

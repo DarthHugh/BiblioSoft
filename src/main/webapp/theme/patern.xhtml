@@ -42,7 +42,7 @@
                                                 url="/borrowing/borrowings.xhtml"
                                                 icon="ui-icon-search"/>
                                 </p:submenu>
-                                
+
                                 <p:submenu label="Devolução" icon="ui-icon-pencil">
                                     <p:menuitem value="Realizar Devolução"
                                                 url="/return/realizeReturn.xhtml"
@@ -82,11 +82,11 @@
                 <p:layoutUnit position="west" >  
                     <ui:insert name="left">
                         <p:fieldset legend="Últimos empréstimos" >
-                            - JAVA Como programar<br> </br>
-                            - Engenharia de software<br> </br>
-                            - Cormem Algorithms<br> </br>
-                            - Core Java<br> </br>
-                            - Use a Cabeça Desing Paterns
+
+                            <p:dataList value="#{borrowingBean.borrowings}" var="bor">
+                                Uuario: #{bor.idUser.name}, #{bor.id}
+                            </p:dataList>
+                            
                         </p:fieldset>
                     </ui:insert>
                 </p:layoutUnit>  

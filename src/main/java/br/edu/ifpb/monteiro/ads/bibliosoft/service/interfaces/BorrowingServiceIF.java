@@ -5,10 +5,15 @@
  */
 package br.edu.ifpb.monteiro.ads.bibliosoft.service.interfaces;
 
+import br.edu.ifpb.monteiro.ads.bibliosoft.entities.Borrowing;
+import java.util.List;
+
 /**
  *
  * @author matheusoliveira
  */
 public interface BorrowingServiceIF extends InterfaceCrudService{
+    
+    public List<Borrowing> findAllBorrowing();
     
 }

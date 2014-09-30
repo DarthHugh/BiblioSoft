@@ -3,8 +3,10 @@ package br.edu.ifpb.monteiro.ads.bibliosoft.dao;
 import br.edu.ifpb.monteiro.ads.bibliosoft.entities.Borrowing;
 import br.edu.ifpb.monteiro.ads.bibliosoft.dao.interfaces.BorrowingDAOIF;
 import br.edu.ifpb.monteiro.ads.bibliosoft.dao.qualifiers.QualifierBorrowingDAO;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -26,4 +28,10 @@ public class BorrowingDAO extends AbstractDAO<Borrowing>
         super(Borrowing.class);
     }
 
+    @Override
+    public List<Borrowing> findAllBorrowing() {
+        Query query;
+        query = getEntityManager().createQuery("From Borrowing b WHERE b.borrowing=TRUE");
+        return query.getResultList();
+    }
 }
