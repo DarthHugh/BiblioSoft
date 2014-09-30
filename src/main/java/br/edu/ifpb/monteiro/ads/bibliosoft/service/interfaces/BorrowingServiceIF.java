@@ -15,4 +15,6 @@ import java.util.List;
 public interface BorrowingServiceIF extends InterfaceCrudService{
     
     public List<Borrowing> findBorrowingNotReturn();
+    public List<Borrowing> findAllBorrowing();
+    
 }

@@ -43,6 +43,11 @@ public class BorrowingBean extends AbstractBean{
     public IdentifiableBiblio getBorrowing(){
         return this.borrowing;
     }
+    
+    public List<Borrowing> findAllBorrowing(){
+        return  borrowingService.findAllBorrowing();
+    }
+    
     public void setBorrowing(Borrowing borrowing){
         this.borrowing=borrowing;
     }

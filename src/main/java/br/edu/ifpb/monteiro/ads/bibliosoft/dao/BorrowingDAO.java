@@ -29,6 +29,11 @@ public class BorrowingDAO extends AbstractDAO<Borrowing>
     }
 
     @Override
+    public List<Borrowing> findAllBorrowing() {
+        Query query;
+        query = getEntityManager().createQuery("From Borrowing b WHERE b.borrowing=TRUE");
+        return query.getResultList();
+    }
     public List<Borrowing> findBorrowingNotReturn() {
         Query query;
 //        query = getEntityManager().createNativeQuery("SELECT b FROM Borrowing b, MaterialCopy mc"

@@ -14,5 +14,7 @@ import java.util.List;
  */
 public interface BorrowingDAOIF extends AbstractDAOIF{
     
+    public List<Borrowing> findAllBorrowing();
+
     public List<Borrowing> findBorrowingNotReturn();
 }
