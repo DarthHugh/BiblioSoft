@@ -31,11 +31,11 @@ public class MaterialBean extends AbstractBean{
     
     @Inject
     @QualifierMaterial
-    private IdentifiableBiblio material;
+    private Material material;
     
     @Inject
     @QualifierMaterialCopy
-    private IdentifiableBiblio materialCopy;
+    private MaterialCopy materialCopy;
     
     public MaterialBean() {
     }
@@ -81,7 +81,12 @@ public class MaterialBean extends AbstractBean{
     }
     public void saveMaterials(){
         getService().save(material);
-        materialCopyService.save(materialCopy);
+        materialCopy.setIdMaterial(material);
+        materialCopy.setBorrowing(false);
+        for(int i = 0; i < material.getCopiesNumber(); i++){
+             materialCopyService.save(materialCopy);
+             materialCopy.setId(null);
+        }
         limparForm();
     }
 }
