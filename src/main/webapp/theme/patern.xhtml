@@ -83,8 +83,8 @@
                     <ui:insert name="left">
                         <p:fieldset legend="Últimos empréstimos" >
 
-                            <p:dataList value="#{borrowingBean.borrowings}" var="bor">
-                                Uuario: #{bor.idUser.name}, #{bor.id}
+                            <p:dataList value="#{borrowingBean.borrowings}" var="bor" style="font-size: 5px">
+                               #{bor.idMaterialCopy.idMaterial.name}
                             </p:dataList>
                             
                         </p:fieldset>
