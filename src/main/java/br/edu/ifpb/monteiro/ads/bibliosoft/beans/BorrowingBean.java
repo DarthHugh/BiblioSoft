@@ -34,6 +34,8 @@ public class BorrowingBean extends AbstractBean{
     @QualifierBorrowing
     private Borrowing borrowing;
     
+    private Borrowing selected;
+    
     private List<Borrowing> borrowings;
     
     @Inject
@@ -91,10 +93,22 @@ public class BorrowingBean extends AbstractBean{
 
         }
     }
+
+    public Borrowing getSelected() {
+        return selected;
+    }
+
+    
+
+    public void setSelected(Borrowing selected) {
+        this.selected = selected;
+    }
+    
+    
     public void returnMaterial(){
         try {
-            borrowing.getIdMaterialCopy().setBorrowing(false);
-            this.materialCopyService.update(borrowing.getIdMaterialCopy());
+            selected.getIdMaterialCopy().setBorrowing(false);
+            this.materialCopyService.update(selected.getIdMaterialCopy());
             
         } catch (Exception e) {
         }
